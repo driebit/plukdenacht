@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="//127.0.0.1:3000/socket.io/socket.io.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
         <script>
             (function () {
                 'use strict';
@@ -17,7 +17,7 @@
                         socketUrl += ':' + port;
                     }
 
-                    socketUrl += '/canvas';
+                    socketUrl += '/players';
 
                     socket = io(socketUrl);
 
@@ -32,7 +32,7 @@
 
                     document.querySelector('button').addEventListener('click', function () {
                         socket.emit('message', {'message': Date.now() });
-                    })
+                    });
                 });
             })();
         </script>
