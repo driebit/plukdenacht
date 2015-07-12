@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="//127.0.0.1:3000/socket.io/socket.io.js"></script>
+        <script>
+            (function () {
+                'use strict';
+
+                var socket;
+
+                window.addEventListener('DOMContentLoaded', function () {
+                    socket = io('//localhost:3000/players');
+
+                    socket.on('message', function (data) {
+                        var messages = document.getElementById('messages'),
+                            html = messages.innerHTML;
+
+                        html += data.message + '<br/>';
+
+                        messages.innerHTML = html;
+                    });
+
+                    document.querySelector('button').addEventListener('click', function () {
+                        socket.emit('message', {'message': Date.now() });
+                    })
+                });
+            })();
+        </script>
+    </head>
+
+    <body>
+        <h1>Player</h1>
+
+        <div id="messages"></div>
+        <button>Send message</button>
+    </body>
+</html>
