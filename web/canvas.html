@@ -9,7 +9,17 @@
                 var socket;
 
                 window.addEventListener('DOMContentLoaded', function () {
-                    socket = io('//localhost:3000/canvas');
+                    var docLoc = document.location,
+                        port   = docLoc.port,
+                        socketUrl = '//' + docLoc.hostname;
+
+                    if (port !== '') {
+                        socketUrl += ':' + port;
+                    }
+
+                    socketUrl += '/canvas';
+
+                    socket = io(socketUrl);
 
                     socket.on('message', function (data) {
                         var messages = document.getElementById('messages'),
