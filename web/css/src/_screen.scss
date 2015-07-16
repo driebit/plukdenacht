@@ -5,9 +5,14 @@
     top: 0px;
     left: 100%;
     border: 1px solid red;
+    transition: left 0.4s;
 
     &.is-active {
         left: 0px;
+    }
+
+    &.is-not-active {
+        left: -100%;
     }
 }
 
@@ -16,4 +21,8 @@
 .screen--play,
 .screen--score {
     @extend .screen;
+}
+
+.screen--side {
+    background: red;
 }

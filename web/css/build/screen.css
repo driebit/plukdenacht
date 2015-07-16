@@ -376,9 +376,26 @@ html, body {
   position: absolute;
   top: 0px;
   left: 100%;
-  border: 1px solid red; }
+  border: 1px solid red;
+  transition: left 0.4s; }
   .screen.is-active, .is-active.screen--wait,
   .is-active.screen--side,
   .is-active.screen--play,
   .is-active.screen--score {
     left: 0px; }
+  .screen.is-not-active, .is-not-active.screen--wait,
+  .is-not-active.screen--side,
+  .is-not-active.screen--play,
+  .is-not-active.screen--score {
+    left: -100%; }
+
+.screen--side {
+  background: red; }
+
+.btn, .btn--play, .btn-side {
+  display: inline-block;
+  height: 50px;
+  padding: 10px 40px;
+  cursor: pointer;
+  border: none;
+  font-size: 20px; }
