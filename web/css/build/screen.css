@@ -377,10 +377,10 @@ html, body {
   font-family: 'GeoSlab';
   -webkit-font-smoothing: subpixel-antialiased; }
 
-.screen, .screen--wait,
-.screen--side,
+.screen, .screen--side,
 .screen--play,
-.screen--score {
+.screen--score,
+.screen--about-to-start {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -390,15 +390,15 @@ html, body {
   overflow: hidden;
   background: #7ED321;
   color: #fff; }
-  .screen.is-active, .is-active.screen--wait,
-  .is-active.screen--side,
+  .screen.is-active, .is-active.screen--side,
   .is-active.screen--play,
-  .is-active.screen--score {
+  .is-active.screen--score,
+  .is-active.screen--about-to-start {
     left: 0px; }
-  .screen.is-not-active, .is-not-active.screen--wait,
-  .is-not-active.screen--side,
+  .screen.is-not-active, .is-not-active.screen--side,
   .is-not-active.screen--play,
-  .is-not-active.screen--score {
+  .is-not-active.screen--score,
+  .is-not-active.screen--about-to-start {
     left: -100%; }
 
 .screen--side {
@@ -447,6 +447,26 @@ html, body {
   background: #4563a6; }
   .is-team-red .click-bar__meter {
     background: #DA4266; }
+
+.wait-logo {
+  width: 300px;
+  height: 380px;
+  margin-top: 10px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -150px;
+  background: url("/images/logo.png") no-repeat;
+  background-size: 100%; }
+
+.screen--about-to-start p {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  text-transform: uppercase; }
 
 .btn, .btn--play {
   display: inline-block;
