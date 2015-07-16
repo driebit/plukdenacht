@@ -41,12 +41,14 @@
     <body>
 
         <h1>Player</h1>
-        <div id="messages"></div>
+        
+        <!-- <div id="messages"></div> -->
         
         <div id="wait" class="screen--wait">
             Wachten op touwtjetrekken
-            <button>Send message</button>
+            <!-- <button>Send message</button> -->
         </div>
+
         <div id="side" class="screen--side">
             <button id="player-left" class="btn-side btn-side--left">Links</button>
             <button id="player-right" class="btn-side btn-side--right">rechts</button>
@@ -64,13 +66,22 @@
         <div id="score" class="screen--score">
             Zoveel clicks heb je gegeven
         </div>
+    
+
+
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/player/ui.js"></script>
+    <script src="js/player/imagecapture.js"></script>
+    <script src="js/player/player.js"></script>
+
+
+    <script>
+        player.init();
+    </script>
+
        
-        
     </body>
+
 </html>
-
-
-
-
 
 
