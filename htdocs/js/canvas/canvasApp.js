@@ -8,32 +8,8 @@ var canvasApp = (function() {
 
         console.log('init canvas app, start init other modules');
 
-        // gamestate = createGame();
-        gamestate = fakeGame();
-
-        //socket
-
-        var docLoc = document.location,
-            port   = docLoc.port,
-            socketUrl = '//' + docLoc.hostname;
-
-        if (port !== '') {
-            socketUrl += ':' + port;
-        }
-
-        socketUrl += '/canvas';
-
-        socket = io(socketUrl);
-
-
-        // //handlers
-        socket.on('message', function (data) {
-
-            if(data.type == 'handle_team_choice') {
-                addPlayerToTeam(data.player, team);
-            }
-
-        });
+        gamestate = createGame();
+        //gamestate = fakeGame();
 
     }
     
@@ -62,30 +38,57 @@ var canvasApp = (function() {
         }
     }
 
-    function addPlayer(player) {
-        gamestate.players.push(player);
+    function addPlayer(id) {
+        return gamestate.players.push({id: id});
+    }
+
+    function getPlayer(id) {
+        return $.grep(gamestate.players, function(e){ return e.id == id; })[0];
     }
     
-    function addPlayerToTeam(player, team) {
-        var player = getPlayer(id);
-        player.team = team;
-    }
-    
-    function startGame() {
-        gamestate.players.map(function(player) {
-          player.set({running: 1});
-        })
-    }
-    
-    function endGame() {
-        gamestate.players.map(function(player) {
-          player.set({running: 0});
-        })
+    function setPlayerProp(id, name, value) {
+        return getPlayer(id)[name] = value;
     }
     
     function addClicks(player, count) {
         player.score += count;
     }
+    
+    // Game state changes
+    
+    function startCountDown(duration, display, callback) {
+        var timer = duration, minutes, seconds;
+        var interval = setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.text(minutes + ":" + seconds);
+
+            if (--timer < 0) {
+                timer = duration;
+                callback();
+                clearInterval(interval);
+            }
+        }, 1000);
+    }
+    
+    
+    
+    function startGame() {
+        gamestate.players.map(function(player) {
+          
+        })
+    }
+    
+    function endGame() {
+        // gamestate.players.map(function(player) {
+        //   player.set({running: 0});
+        // })
+    }
+    
     
     function currentTeamTotal(team) {
         t = gamestate.players.filter(function(player) {
@@ -129,12 +132,20 @@ var canvasApp = (function() {
         renderPlayers();
         renderTotals();
     }
+    
+    function state() {
+        return gamestate;
+    }
 
     return {
         init: init,
         render: render,
-        total: currentTeamTotal,
-        state: gamestate
+        addPlayer: addPlayer,
+        getPlayer: getPlayer,
+        setPlayerProp: setPlayerProp,
+        currentTeamTotal: currentTeamTotal,
+        startCountDown: startCountDown,
+        state: state
     }
 
 })();

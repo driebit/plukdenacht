@@ -13,15 +13,21 @@
 <body>
 
   <h1>GAME!! (canvas)</h1>
-
+  
+  <div id='timer'></div>
+  
   <div id='players'></div>
 
   <script src="/js/lib/screen.js"></script>
+  <script src="js/canvas/canvasApp.js"></script>
   <script src="/js/lib/jquery.min.js"></script>
   <script>
   console.log(gameScreen);
+  
+    canvasApp.init();
+  
     gameScreen.requestGame('nl.driebit.tugofwar', function(game){
-
+      
       console.log('game ready', game);
 
       function requestPlayer(){
@@ -30,36 +36,44 @@
 
       function onPlayer(player){
         if(player){
-          console.log('player')
-          var d = $('<div/>', {id: player.getID()});
-          var n = $('<div/>', {id: 'name'});
-          var p = $('<img/>', {id: 'photo'});
-          var t = $('<div/>', {id: 'test'});
-          d.append(n); d.append(p); d.append(t);
-          $('#players').append(d);
-
+          // console.log(player);
+          // var d = $('<div/>', {id: player.getID()});
+          // var n = $('<div/>', {id: 'name'});
+          // var p = $('<img/>', {id: 'photo'});
+          // var t = $('<div/>', {id: 'test'});
+          // d.append(n); d.append(p); d.append(t);
+          // $('#players').append(d);
+          
+          canvasApp.addPlayer(player.getID());
+          canvasApp.setPlayerProp(player.getID(), 'channel', player);
+          
           player.on('name', function(name){
-            n.text(name);
+            canvasApp.setPlayerProp(player.getID(), 'name', name);
           })
-
-          player.on('photo', function(url){
-            p.attr('src', url);
+          
+          player.on('team', function(name){
+            canvasApp.setPlayerProp(player.getID(), 'team', name);
           })
-
-          player.on('test', function(data){
-            t.text(data)
+          
+          player.on('photo', function(photo){
+            canvasApp.setPlayerProp(player.getID(), 'photo', photo);
           })
-
-          player.set('iets', 24); //set some test data
+          
+          player.on('score', function(score){
+            canvasApp.setPlayerProp(player.getID(), 'score', score);
+          })
 
         }
 
-        setTimeout(requestPlayer, 1000);
+        setTimeout(requestPlayer, 10);
       }
+      
+      canvasApp.startCountDown(60 * 0.1, $('#timer'), canvasApp.startGame());
 
       requestPlayer();
 
     });
+    
   </script>
 </body>
 </html>
