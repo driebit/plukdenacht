@@ -463,7 +463,7 @@ html, body {
   top: 20px;
   left: 50%;
   margin-left: -150px;
-  background: url("/images/logo.png") no-repeat;
+  background: url("/nl.driebit.tugofwar/images/logo.png") no-repeat;
   background-size: 100%; }
 
 .screen--about-to-start p {
@@ -506,30 +506,27 @@ html, body {
   left: 100%;
   transition: left 0.4s;
   overflow: hidden;
-  background: #7ED321;
   color: #fff;
   font-size: 60px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  background: #bee890; }
   .canvas.is-active, .is-active.canvas--play {
     left: 0px; }
   .canvas.is-not-active, .is-not-active.canvas--play {
     left: -100%; }
-
-.canvas-logo {
-  width: 400px;
-  height: 520px;
-  margin-top: 10px;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  margin-left: -200px;
-  background: url("/images/logo.png") no-repeat;
-  background-size: 100%; }
+  .canvas:before, .canvas--play:before {
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #7ED321; }
 
 .canvas--play .countdown {
   width: 100%;
   position: absolute;
-  top: 338px;
+  top: 290px;
   text-align: center;
   font-size: 120px;
   line-height: 1; }
@@ -544,12 +541,6 @@ html, body {
   font-size: 60px;
   text-transform: uppercase; }
 
-.canvas__top {
-  width: 100%;
-  height: 212px;
-  background: #97e245;
-  font-family: 'Freshman'; }
-
 .canvas__top__logo {
   display: block;
   width: 513px;
@@ -557,27 +548,27 @@ html, body {
   position: absolute;
   top: 46px;
   left: 440px;
-  background: url("/images/canvas-top-logo.svg"); }
+  background: url("/nl.driebit.tugofwar/images/canvas-top-logo.svg"); }
 
 .canvas__top__team-left,
 .canvas__top__team-right {
   width: 224px;
   height: 96px;
   position: absolute;
-  top: 60px;
-  right: 100px;
-  background: url("/images/team-left.svg") no-repeat; }
+  top: 320px;
+  right: 160px;
+  background: url("/nl.driebit.tugofwar/images/team-left.svg") no-repeat; }
 
 .canvas__top__team-left {
-  left: 100px;
+  left: 160px;
   right: auto;
-  background-image: url("/images/team-right.svg"); }
+  background-image: url("/nl.driebit.tugofwar/images/team-right.svg"); }
 
 .power-meter--right, .power-meter--left {
   width: 76px;
   height: 188px;
   position: absolute;
-  top: 299px;
+  top: 100px;
   right: 250px;
   background: #E2E0E0; }
   .power-meter--right:after, .power-meter--left:after {
@@ -609,7 +600,7 @@ html, body {
   position: absolute;
   bottom: 237px;
   left: 50%;
-  background: url("/images/touw.svg") no-repeat;
+  background: url("/nl.driebit.tugofwar/images/touw.svg") no-repeat;
   transform: translateX(-50%); }
   .rope:before,
   .rope:after {
@@ -619,26 +610,46 @@ html, body {
     position: absolute;
     bottom: -45px;
     right: -30px;
-    background: url("/images/member-right.svg") no-repeat; }
+    background: url("/nl.driebit.tugofwar/images/member-right.svg") no-repeat; }
   .rope:before {
     width: 73px;
     bottom: -58px;
     right: auto;
     left: -30px;
-    background: url("/images/member-left.svg") no-repeat; }
+    background: url("/nl.driebit.tugofwar/images/member-left.svg") no-repeat; }
 
 .player-wrapper__team-left .member {
   width: 88px;
   height: 111px;
   position: absolute;
-  background: url("/images/member-left.svg") no-repeat; }
+  background: url("/nl.driebit.tugofwar/images/member-left.svg") no-repeat; }
   .player-wrapper__team-left .member img {
     width: 40px;
     position: absolute;
-    top: -15px;
-    left: -5px;
+    top: -14px;
+    left: -6px;
     border-radius: 100%;
     border: 2px solid #fff; }
+
+.player-wrapper__team-right {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  border: 1px solid red; }
+  .player-wrapper__team-right .member {
+    width: 88px;
+    height: 111px;
+    position: absolute;
+    background: url("/nl.driebit.tugofwar/images/member-right.svg") no-repeat; }
+    .player-wrapper__team-right .member img {
+      width: 40px;
+      position: absolute;
+      top: -5px;
+      right: 1px;
+      border-radius: 100%;
+      border: 2px solid #fff; }
 
 .btn, .btn--play {
   display: inline-block;
@@ -687,7 +698,7 @@ html, body {
     top: 5%;
     left: 5%;
     z-index: 5;
-    background: url("/images/groepje-iconen.svg") center top;
+    background: url("/nl.driebit.tugofwar/images/groepje-iconen.svg") center top;
     background-repeat: space;
     opacity: 0.3; }
 
