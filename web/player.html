@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Vet coole touwtrek game</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
         <script src="/socket.io/socket.io.js"></script>
         <script>
             // (function () {
@@ -42,26 +42,24 @@
     </head>
 
     <body>
-        <div class="container">
-    <!-- <h1>Player</h1>
-        <div id="messages"></div>
-        -->        
-            <div id="wait" class="screen--wait is-active">
-                Wachten op touwtjetrekken
-                <!--<button>Send message</button>-->
+        <div id="wait" class="screen--wait">
+            TUG OF WAR
+            <!--<button>Send message</button>-->
+        </div>
+        <div id="side" class="screen--side is-active">
+            <div class="screen__intro">
+                <span>Aan welke kant van het scherm zit je?</span>
             </div>
-            <div id="side" class="screen--side">
-                <button id="player-left" class="btn-side btn-side--left">Links</button>
-                <button id="player-right" class="btn-side btn-side--right">rechts</button>
-            </div>
+            <button id="player-left" class="btn-side btn-side--left"><span>Links</span></button>
+            <button id="player-right" class="btn-side btn-side--right"><span>rechts</span></button>
+        </div>
 
-            <div id="play" class="screen--play">
-                <button id="hitit" class="btn--play">PUSH IT!</button>
-            </div>
+        <div id="play" class="screen--play">
+            <button id="hitit" class="btn--play">PUSH IT!</button>
+        </div>
 
-            <div id="score" class="screen--score">
-                Zoveel clicks heb je gegeven
-            </div>
+        <div id="score" class="screen--score">
+            Zoveel clicks heb je gegeven
         </div>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>

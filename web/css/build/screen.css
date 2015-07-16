@@ -355,6 +355,13 @@ td,
 th {
   padding: 0; }
 
+@font-face {
+  font-family: 'GeoSlab';
+  src: url("../fonts/geo703xb-webfont.eot");
+  src: url("../fonts/geo703xb-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/geo703xb-webfont.woff2") format("woff2"), url("../fonts/geo703xb-webfont.woff") format("woff"), url("../fonts/geo703xb-webfont.ttf") format("truetype"), url("../fonts/geo703xb-webfont.svg#geoslab703_xbd_btextra_bold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 html {
   box-sizing: border-box; }
 
@@ -365,7 +372,9 @@ html, body {
   width: 100%;
   height: 100%;
   background: #020032;
-  color: #fff; }
+  color: #fff;
+  overflow: hidden;
+  -webkit-font-smoothing: subpixel-antialiased; }
 
 .screen, .screen--wait,
 .screen--side,
@@ -376,8 +385,8 @@ html, body {
   position: absolute;
   top: 0px;
   left: 100%;
-  border: 1px solid red;
-  transition: left 0.4s; }
+  transition: left 0.4s;
+  overflow: hidden; }
   .screen.is-active, .is-active.screen--wait,
   .is-active.screen--side,
   .is-active.screen--play,
@@ -390,12 +399,77 @@ html, body {
     left: -100%; }
 
 .screen--side {
-  background: red; }
+  background: #f7f7f7;
+  color: #4563a6;
+  font-family: 'GeoSlab';
+  font-size: 33px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center; }
 
-.btn, .btn--play, .btn-side {
+.screen__intro {
+  width: 100%;
+  height: 40%;
+  padding: 20px 15px 0 15px;
+  position: relative;
+  z-index: 20; }
+  .screen__intro span {
+    display: block;
+    padding: 20px;
+    transform: perspective(5em) rotateX(-25deg); }
+
+.btn, .btn--play {
   display: inline-block;
   height: 50px;
   padding: 10px 40px;
   cursor: pointer;
   border: none;
   font-size: 20px; }
+
+.btn-side {
+  display: block;
+  width: 48%;
+  height: 60%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 0px;
+  z-index: 10;
+  background: #DA4266;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: 2px; }
+  .btn-side span {
+    position: relative;
+    z-index: 10; }
+    .btn-side span:before {
+      content: '';
+      box-sizing: content-box;
+      width: 100%;
+      height: 100%;
+      padding: 10px 12px 5px 12px;
+      position: absolute;
+      top: -10px;
+      left: -15px;
+      z-index: -1;
+      border-radius: 5px;
+      border: 3px solid #fff; }
+  .btn-side:after {
+    content: '';
+    width: 90%;
+    height: 91%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 5;
+    background: url("/images/groepje-iconen.svg") center top;
+    background-repeat: space;
+    opacity: 0.3; }
+
+.btn-side--right {
+  left: auto;
+  right: 0px;
+  background: #4563a6; }
