@@ -4,14 +4,19 @@ var ui = (function() {
 
         console.log('init ui module');
 
-        $('#').on('click', handleGroupSelect);
-        //$('#').on('click', );
+        $('#player-left').on('click', function() {
+            handleGroupSelect('left')
+        });
+        
+        $('#player-right').on('click', function() {
+            handleGroupSelect('right')
+        });
 
     }
 
 
-    function handleGroupSelect() {
-
+    function handleGroupSelect(side) {
+        console.log('group selected ' + side);
 
     }
 
