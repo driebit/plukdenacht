@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>GAME Test</title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <h1>GAME!! (canvas)</h1>
+
+  <div id='players'></div>
+
+  <script src="/js/lib/screen.js"></script>
+  <script src="/js/lib/jquery.min.js"></script>
+  <script>
+  console.log(gameScreen);
+    gameScreen.requestGame('nl.driebit.tugofwar', function(game){
+
+      console.log('game ready', game);
+
+      function requestPlayer(){
+        game.requestPlayer(onPlayer);
+      }
+
+      function onPlayer(player){
+        if(player){
+          console.log('player')
+          var d = $('<div/>', {id: player.getID()});
+          var n = $('<div/>', {id: 'name'});
+          var p = $('<img/>', {id: 'photo'});
+          var t = $('<div/>', {id: 'test'});
+          d.append(n); d.append(p); d.append(t);
+          $('#players').append(d);
+
+          player.on('name', function(name){
+            n.text(name);
+          })
+
+          player.on('photo', function(url){
+            p.attr('src', url);
+          })
+
+          player.on('test', function(data){
+            t.text(data)
+          })
+
+          player.set('iets', 24); //set some test data
+
+        }
+
+        setTimeout(requestPlayer, 1000);
+      }
+
+      requestPlayer();
+
+    });
+  </script>
+</body>
+</html>
