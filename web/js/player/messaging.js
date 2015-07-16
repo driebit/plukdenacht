@@ -1,5 +1,7 @@
 var messaging = (function() {
 
+    var socket = null;
+
     function init() {
 
         console.log('init messaging module');
@@ -28,12 +30,11 @@ var messaging = (function() {
         });
 
 
-
-
     }
 
     return {
         init: init,
+        socket: socket
     }
   
 })();

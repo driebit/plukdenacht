@@ -468,6 +468,29 @@ html, body {
   font-size: 40px;
   text-transform: uppercase; }
 
+.screen--score {
+  font-size: 40px; }
+  .screen--score p {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase; }
+
+.score-avatar {
+  width: 200px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -100px;
+  text-transform: uppercase; }
+  .score-avatar img {
+    border-radius: 50%;
+    border: 5px solid #fff; }
+
 .btn, .btn--play {
   display: inline-block;
   height: 50px;
