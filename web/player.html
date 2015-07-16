@@ -3,45 +3,54 @@
     <head>
         <script src="/socket.io/socket.io.js"></script>
         <script>
-            (function () {
-                'use strict';
+            // (function () {
+            //     'use strict';
 
-                var socket;
+            //     var socket;
 
-                window.addEventListener('DOMContentLoaded', function () {
-                    var docLoc = document.location,
-                        port   = docLoc.port,
-                        socketUrl = '//' + docLoc.hostname;
+            //     window.addEventListener('DOMContentLoaded', function () {
+            //         var docLoc = document.location,
+            //             port   = docLoc.port,
+            //             socketUrl = '//' + docLoc.hostname;
 
-                    if (port !== '') {
-                        socketUrl += ':' + port;
-                    }
+            //         if (port !== '') {
+            //             socketUrl += ':' + port;
+            //         }
 
-                    socketUrl += '/players';
+            //         socketUrl += '/players';
 
-                    socket = io(socketUrl);
+            //         socket = io(socketUrl);
 
-                    socket.on('message', function (data) {
-                        var messages = document.getElementById('messages'),
-                            html = messages.innerHTML;
+            //         socket.on('message', function (data) {
+            //             var messages = document.getElementById('messages'),
+            //                 html = messages.innerHTML;
 
-                        html += data.message + '<br/>';
+            //             html += data.message + '<br/>';
 
-                        messages.innerHTML = html;
-                    });
+            //             messages.innerHTML = html;
+            //         });
 
-                    document.querySelector('button').addEventListener('click', function () {
-                        socket.emit('message', {'message': Date.now() });
-                    });
-                });
-            })();
+            //         document.querySelector('button').addEventListener('click', function () {
+            //             socket.emit('message', {'message': Date.now() });
+            //         });
+            //     });
+            // })();
         </script>
     </head>
 
     <body>
-        <h1>Player</h1>
+        <h1>PLAYER SCREEN</h1>
 
         <div id="messages"></div>
         <button>Send message</button>
+
+        
+        
     </body>
 </html>
+
+
+
+
+
+
