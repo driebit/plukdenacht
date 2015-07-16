@@ -70,31 +70,31 @@
 
 .btn-play {
     display: block;
-    width: 300px;
-    height: 300px;
+    width: 252px;
+    height: 252px;
     padding: 0;
     margin: 0 auto;
     position: relative;
     top: 0;
-    background: $red url('/nl.driebit.tugofwar/images/groepje-iconen.svg') no-repeat center center;
+    background: #417505 url('/nl.driebit.tugofwar/images/eagle.svg') center center no-repeat;
     border: none;
     border-radius: 100%;
-    box-shadow: 0 13px 0 darken($red, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
-    transition: all 0.1s;
+    box-shadow: 0 13px 0 darken(#417505, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0s;
     outline: 0;
     font-size: 50px;
 
     &:active {
         top: 13px;
-        box-shadow: 0 2px 0 darken($red, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
-        background-image: url('/nl.driebit.tugofwar/images/member-left.svg')
+        box-shadow: 0 2px 0 darken(#417505, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+        background-image: url('/nl.driebit.tugofwar/images/eagle-hit.svg');
     }
 
     .is-team-left & {
-        background: $blue;
-        box-shadow: 0 13px 0 darken($blue, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+        background: #417505 url('/nl.driebit.tugofwar/images/bull.svg') center center no-repeat;
 
         &:active {
+            background-image: url('/nl.driebit.tugofwar/images/bull-hit.svg');
             box-shadow: 0 2px 0 darken($blue, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
         }
     }
