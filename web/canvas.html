@@ -8,42 +8,39 @@
     </head>
 
     <body>
+        <div id="info" class="canvas--play is-active">
+            <div class="canvas__top">
+                <div class="canvas__top__team-left"></div>
+                <div class="canvas__top__logo"></div>
+                <div class="canvas__top__team-right"></div>
+            </div>
+            <div class="power-meter--left"><span id="totalTeamA" style="height: 10%;"></span></div>
+            <div class="power-meter--right"><span id="totalTeamB" style="height: 10%;"></span></div>
+            <div class="countdown">
+                <span class="countdown__minutes">00</span>:<span class="countdown__seconds">30</span>
+            </div>
 
-    <div id="info" class="canvas--play is-active">
-        <div class="canvas__top">
-            <div class="canvas__top__team-left"></div>
-            <div class="canvas__top__logo"></div>
-            <div class="canvas__top__team-right"></div>
-        </div>
-        <div class="power-meter--left"><span style="height: 100px;"></span></div>
-        <div class="power-meter--right"><span style="height: 100px;"></span></div>
-        <div class="countdown">
-            <span class="countdown__minutes">00</span>:<span class="countdown__seconds">30</span>
-        </div>
+            <div class="player-wrapper">
+                <div class="player-wrapper__team-left">
+                    <ul id="playersTeamA" class="team-members--left">
+                        <li class="member">
+                            <img src="http://masswallpapers.mobi/wp-content/uploads/charlie-sheen-lucas-football-wallpapers-3.jpg" alt="">
+                        </li>
+                    </ul>
+                    <div >
 
-        <div class="player-wrapper">
-            <div class="player-wrapper__team-left">
-                <div class="team-members--left">
-                    <div class="member">
-                        <img src="http://masswallpapers.mobi/wp-content/uploads/charlie-sheen-lucas-football-wallpapers-3.jpg" alt="">
+
+                        
                     </div>
-
-
-                    
+                </div>
+                <div class="rope"></div>
+                <div class="player-wrapper__team-right">
+                    <ul id="playersTeamB">
+                    </ul>
+                    <div class="team-members--right"></div>
                 </div>
             </div>
-            <div class="rope"></div>
-            <div class="player-wrapper__team-right">
-                <div class="team-members--right"></div>
-            </div>
         </div>
-    </div>
-
-
-    <!--     <h1>Canvas</h1>
-
-        <div id="messages"></div>
-        <button>Send message</button> -->
     </body>
 
 

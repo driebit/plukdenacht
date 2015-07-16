@@ -45,19 +45,14 @@ var ui = (function() {
 
     }
 
-
     function buildScoreScreen() {
-
         console.log('build score screen');
-
+        $('#score-total-taps').html(playerApp.gameState.player.taps);
     }
 
-
     return {
-
         init: init,
         goToScreen: goToScreen
-
     }
   
 })();
