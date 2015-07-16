@@ -4,7 +4,7 @@ var playerApp = (function() {
         currentScreen,
         playerObject,
         config = {
-            gameLength: 6,
+            gameLength: 4,
             gameTickLength: 2
         },
         gameState = createGameState(),
@@ -100,7 +100,6 @@ var playerApp = (function() {
 
     }
 
-
     function handleTeamChoice(team) {
 
         console.log('handle team choice');
@@ -113,7 +112,6 @@ var playerApp = (function() {
     }
 
     function handleTap() {
-       gameState.score++;
        gameState.player.score++;
     }
 
