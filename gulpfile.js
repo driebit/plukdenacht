@@ -1,8 +1,8 @@
 var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
 
-    CSS_SOURCE   = 'web/css/src',
-    CSS_BUILD    = 'web/css/build',
+    CSS_SOURCE   = 'htdocs/css/src',
+    CSS_BUILD    = 'htdocs/css/build',
     //JS_SOURCE    = 'web/js/src',
     //JS_BUILD     = 'web/js/build';
     TEMPLATES    = 'web'

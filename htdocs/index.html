@@ -4,18 +4,42 @@
 <head>
   <meta charset="utf-8">
 
-  <title>GAME Test</title>
+  <title>Vet coole touwtrek game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<link rel="stylesheet" href="css/build/screen.css">
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
 
 <body>
+   <div id="info" class="canvas--play is-active">
+        <div class="canvas__top__team-left"></div>
+        <div class="canvas__top__logo"></div>
+        <div class="canvas__top__team-right"></div>
+        <div class="power-meter--left"><span id="totalTeamA" style="height: 10%;"></span></div>
+        <div class="power-meter--right"><span id="totalTeamB" style="height: 10%;"></span></div>
+        <div class="countdown">
+            <p class="countdown_label">pull!!! <!-- Game starting in--><!-- get ready --></p>
+            <span class="countdown__minutes">00</span>:<span class="countdown__seconds">30</span>
+        </div>
 
-  <h1>GAME!! (canvas)</h1>
-  
-  <div id='timer'></div>
-  
+        <div class="player-wrapper__team-left">
+            <ul id="playersTeamA" class="team-members--left">
+                <li class="member">
+                    <img src="http://masswallpapers.mobi/wp-content/uploads/charlie-sheen-lucas-football-wallpapers-3.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="rope"></div>
+        <div class="player-wrapper__team-right">
+            <ul id="playersTeamB" class="team-members--right">
+                <li class="member">
+                    <img src="http://masswallpapers.mobi/wp-content/uploads/charlie-sheen-lucas-football-wallpapers-3.jpg" alt="">
+                </li>
+            </ul>
+        </div>
+    </div>
   <div id='players'></div>
 
   <script src="/js/lib/screen.js"></script>

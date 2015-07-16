@@ -1,50 +1,3 @@
-<!-- <!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>GAME Test</title> -->
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-<!-- </head> -->
-<!-- 
-<body>
-
-  <h1>GUI!! (client)</h1>
-  <div id="name"></div>
-  <img id="photo"/>
-
-  <script src="/js/lib/device.js"></script>
-  <script src="/js/lib/jquery.min.js"></script>
-  <script>
-    //wait for the player object
-    device.on('player', function(player){
-
-      //bind event to values or messages
-      player.on('name', function(name){
-        $('#name').text(name);
-      });
-
-      player.on('photo', function(url){
-        $('#photo').attr('src', url);
-      });
-
-      player.on('iets', function(data){
-        alert(data);
-      })
-
-      player.set('test', 24); //set some test data
-      player.send('testMsg', 'hello world'); //send some test data
-
-    });
-  </script>
-  </script>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,45 +5,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <script src="/socket.io/socket.io.js"></script>
         <link rel="stylesheet" href="css/build/screen.css">
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
     </head>
 
     <body>
 
         <div id="side" class="screen--side">
             <div class="screen__intro">
-                <span>Aan welke kant van het scherm zit je?</span>
+                <span>On which side of the screen are you sitting?</span>
             </div>
-            <button id="player-left" class="btn-side btn-side--left"><span>Links</span></button>
-            <button id="player-right" class="btn-side btn-side--right"><span>rechts</span></button>
+            <button id="player-left" class="btn-side btn-side--left"><span>left</span></button>
+            <button id="player-right" class="btn-side btn-side--right"><span>right</span></button>
         </div>
         <div id="" class="screen--about-to-start">
             <div class="wait-logo"></div>
-            <p>Nog even geduld! </p>
+            <p>Be ready! </p>
             <button id="debug-start">DEBUG START</button>
         </div>
 
         <div id="play" class="screen--play is-team-red">
             <div class="click-bar-wrapper">
-                Klik meter
+                Strength meter
                 <div class="click-bar"><span class="click-bar__meter" style="width: 100px;"></span></div>
             </div>
             <div class="play-btn-wrapper">
-                <button id="hitit" class="btn-play">HIT ME</button>
+                <button id="hitit" class="btn-play"></button>
             </div>
         </div>
 
         <div id="score" class="screen--score">
-
-            <p>Je hebt <div id="score-total-taps"></div> keer geklikt in 40 seconden, \o/</p>
+            <p>You have clicked <span id="score-total-taps"></span> times, you rock! \o/</p>
             <div class="score-avatar">
-                <img src="http://placehold.it/200/200">
+                <img src="#">
             </div>
 
         </div>
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="/js/lib/device.js"></script>
-        <script src="js/player/messaging.js"></script>
         <script src="js/player/ui.js"></script>
         <script src="js/player/playerApp.js"></script>
 

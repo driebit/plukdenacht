@@ -1,4 +1,205 @@
 .canvas {
     width: 1400px;
     height: 900px;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    transition: left 0.4s;
+    overflow: hidden;
+    color: #fff;
+    font-size: 60px;
+    text-transform: uppercase;
+    background: #bee890;
+
+    &.is-active {
+        left: 0px;
+    }
+
+    &.is-not-active {
+        left: -100%;
+    }
+
+    &:before {
+        content: '';
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: $green;
+    }
+}
+
+@-webkit-keyframes blink {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.canvas--play {
+    @extend .canvas;
+
+    .countdown {
+        width: 100%;
+        position: absolute;
+        bottom: 480px;
+        text-align: center;
+        font-size: 120px;
+        line-height: 1;
+    }
+}
+
+.countdown_label {
+    width: 500px;
+    margin: 0 auto;
+    font-size: 60px;
+    line-height: 1;
+    text-align: center;
+    transition: all 0.1s;
+    opacity: 1;
+    //-webkit-animation: blink 1s infinite; 
+}
+
+.canvas__top__logo {
+    display: block;
+    width: 513px;
+    height: 114px;
+    position: absolute;
+    top: 46px;
+    left: 440px;
+    background: url('/nl.driebit.tugofwar/images/canvas-top-logo.svg');
+}
+
+.canvas__top__team-left,
+.canvas__top__team-right {
+    width: 224px;
+    height: 96px;
+    position: absolute;
+    top: 320px;
+    right: 160px;
+    background: url('/nl.driebit.tugofwar/images/team-left.svg') no-repeat;
+}
+
+.canvas__top__team-left {
+    left: 160px;
+    right: auto;
+    background-image: url('/nl.driebit.tugofwar/images/team-right.svg');
+}
+
+.power-meter--right {
+    width: 76px;
+    height: 188px;
+    position: absolute;
+    top: 100px;
+    right: 250px;
+    background: #E2E0E0;
+
+    &:after {
+        content: '';
+        width: 122px;
+        height: 2px;
+        position: absolute;
+        bottom: 0px;
+        left: -23px;
+        background: $red;
+    }
+
+    span {
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0px;
+        background: $red;
+    }
+}
+
+.power-meter--left {
+    left: 250px;
+    right: auto;
+
+    @extend .power-meter--right;
+
+    &:after {
+        background: $blue;
+    }
+
+    span {
+        background: $blue;
+    }
+}
+
+.rope {
+    width: 1152px;
+    height: 14px;
+    position: absolute;
+    bottom: 237px;
+    left: 50%;
+    background: url('/nl.driebit.tugofwar/images/touw.svg') no-repeat;
+    transform: translateX(-50%);
+
+    &:before,
+    &:after {
+        content: '';
+        width: 88px;
+        height: 111px;
+        position: absolute;
+        bottom: -45px;
+        right: -30px;
+        background: url('/nl.driebit.tugofwar/images/member-right.svg') no-repeat;
+    }
+
+    &:before {
+        width: 73px;
+        bottom: -58px;
+        right: auto;
+        left: -30px;
+        background: url('/nl.driebit.tugofwar/images/member-left.svg') no-repeat;
+    }
+}
+
+.player-wrapper__team-left {
+    .member {
+        width: 88px;
+        height: 111px;
+        position: absolute;
+        background: url('/nl.driebit.tugofwar/images/member-left.svg') no-repeat;
+
+        img {
+            width: 40px;
+            position: absolute;
+            top: -14px;
+            left: -6px;
+            border-radius: 100%;
+            border: 2px solid #fff;
+        }
+    }
+}
+
+.player-wrapper__team-right {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border: 1px solid red;
+    list-style: none;
+
+    .member {
+        width: 88px;
+        height: 111px;
+        position: absolute;
+        background: url('/nl.driebit.tugofwar/images/member-right.svg') no-repeat;
+
+        img {
+            width: 40px;
+            position: absolute;
+            top: -5px;
+            right: 1px;
+            border-radius: 100%;
+            border: 2px solid #fff;
+        }
+    }
+}
+
+.team-members--right {
+    list-style: none;
 }

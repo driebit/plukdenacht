@@ -5,7 +5,7 @@ var playerApp = (function() {
         playerObject,
         config = {
             gameLength: 4,
-            gameTickLength: 2000
+            gameTickLength: 2
         },
         gameState = createGameState(),
         playerChannel,
@@ -16,63 +16,54 @@ var playerApp = (function() {
         console.log('init player app, start init other modules');
 
         ui.init();
-        messaging.init();
-
-        //player events
-        // socket.on('...', startGame);
-        // socket.on('...', endGame);
-
-        ui.goToScreen('choose-side');
-
-        device.on('player', function(player){
+        
+        device.on('player', function(player) {
 
             playerChannel = player;
 
-            //bind event to values or messages
-            playerChannel.on('name', function(name){
-              //$('#name').text(name);
-              console.log(name);
-              //alert(name);
-            });
+            gameState.player.id = playerChannel.getID();
 
-            playerChannel.on('iets', function(data) {
-                //alert('iets', data );
-                console.log(data);
+            playerChannel.on('name', function(name){
+              gameState.player.name = name;
             });
 
             player.on('photo', function(url){
-                //$('#photo').attr('src', url);
-                //alert(url);
+                gameState.player.photo = url;
             });
 
-            player.on('iets', function(data){
-                alert(data);
-            })
+            player.on('isrunning', function(isrunning) {
+                gameState.player.isrunning = isrunning;
+
+                if(isrunning == 1) {
+                    startGame();
+                } else {
+                    stopGame();
+                }
+
+            });
 
             // player.set('test', 2392039203920930293); //set some test data
             // player.send('testMsg', 'hello world'); //send some test data
 
         });
 
-        playerChannel.on('start', startGame);
-
+        //temp
+        ui.goToScreen('choose-side');
      
     }
 
     function createGameState() {
 
-
-
         return {
             player: {
                 id: 1,
                 name: 'danny',
-                image: 'leeg',
-                taps: 0
+                photo: null,
+                team: 'left',
+                score: 0
             },
             timeRemaining: 0,
-            gameTickTimer: null,
-            taps: 0
+            gameTickTimer: null
         }
 
     }
@@ -82,14 +73,14 @@ var playerApp = (function() {
         console.log('start game');  
 
         //start timer
-        gameState.gameTickTimer = window.setInterval(gameTick, config.gameTickLength);
+        gameState.gameTickTimer = window.setInterval(gameTick, (config.gameTickLength * 1000));
         gameState.timeRemaining = config.gameLength;
 
         ui.goToScreen('play');
 
     }
 
-    function endGame() {
+    function stopGame() {
 
         clearInterval(gameState.gameTickTimer);
         console.log('game ended');
@@ -99,36 +90,29 @@ var playerApp = (function() {
 
     function gameTick() {
 
-        console.log('gametick', gameState.timeRemaining);
-        console.log('send: ' + gameState.taps);
+        playerChannel.set('score', gameState.player.score);
 
-        gameState.taps = 0;
-        gameState.timeRemaining--;
+        gameState.timeRemaining = gameState.timeRemaining - config.gameTickLength;
 
         if(gameState.timeRemaining < 0) {
-            endGame();
+            stopGame();
         }
-    }
 
+    }
 
     function handleTeamChoice(team) {
 
         console.log('handle team choice');
 
-        // socket.emit('message', {
-        //         type: 'handle_team_choice',
-        //         player: gameState.player,
-        //         team: team
-        //     }
-        // );
+        gameState.player.team = team;
+        playerChannel.set('team', team);
 
         ui.goToScreen('about-to-start');
 
     }
 
     function handleTap() {
-       gameState.taps++;
-       gameState.player.taps++;
+       gameState.player.score++;
     }
 
     return {

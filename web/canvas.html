@@ -1,66 +1,46 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Vet coole touwtrek game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-            // (function () {
-            //     'use strict';
-
-            //     var socket;
-
-            //     window.addEventListener('DOMContentLoaded', function () {
-            //         var docLoc = document.location,
-            //             port   = docLoc.port,
-            //             socketUrl = '//' + docLoc.hostname;
-
-            //         if (port !== '') {
-            //             socketUrl += ':' + port;
-            //         }
-
-            //         socketUrl += '/canvas';
-
-            //         socket = io(socketUrl);
-
-            //         socket.on('message', function (data) {
-            //             var messages = document.getElementById('messages'),
-            //                 html = messages.innerHTML;
-
-            //             html += data.message + '<br/>';
-
-            //             messages.innerHTML = html;
-            //         });
-
-            //         document.querySelector('button').addEventListener('click', function () {
-            //             socket.emit('message', {'message': Date.now() });
-            //         });
-            //     });
-            // })();
-        </script>
+        <link rel="stylesheet" href="css/build/screen.css">
     </head>
 
     <body>
-<<<<<<< HEAD
-      <!-- <h1>Canvas</h1>
+        <div id="info" class="canvas--play is-active">
+            <div class="canvas__top">
+                <div class="canvas__top__team-left"></div>
+                <div class="canvas__top__logo"></div>
+                <div class="canvas__top__team-right"></div>
+            </div>
+            <div class="power-meter--left"><span id="totalTeamA" style="height: 10%;"></span></div>
+            <div class="power-meter--right"><span id="totalTeamB" style="height: 10%;"></span></div>
+            <div class="countdown">
+                <span class="countdown__minutes">00</span>:<span class="countdown__seconds">30</span>
+            </div>
 
-      <div id="messages"></div>
-      <button>Send message</button> -->
-      <h1>Team A</h1>
-        <ul id="playersTeamA">
-        </ul>
-        <p>Total: <span id="totalTeamA"></span></p>
-      <h1>Team B</h1>
-        <ul id="playersTeamB">
-        </ul>
-        <p>Total: <span id="totalTeamB"></span></p>
-=======
-    <div id="info" class="canvas-"
+            <div class="player-wrapper">
+                <div class="player-wrapper__team-left">
+                    <ul id="playersTeamA" class="team-members--left">
+                        <li class="member">
+                            <img src="http://masswallpapers.mobi/wp-content/uploads/charlie-sheen-lucas-football-wallpapers-3.jpg" alt="">
+                        </li>
+                    </ul>
+                    <div >
 
 
-        <h1>Canvas</h1>
-
-        <div id="messages"></div>
-        <button>Send message</button>
->>>>>>> b9d4abd57b8d5ae085c9ba5107af99ea1d1676f5
+                        
+                    </div>
+                </div>
+                <div class="rope"></div>
+                <div class="player-wrapper__team-right">
+                    <ul id="playersTeamB">
+                    </ul>
+                    <div class="team-members--right"></div>
+                </div>
+            </div>
+        </div>
     </body>
 
 

@@ -6,7 +6,7 @@
     left: 100%;
     transition: left 0.4s;
     overflow: hidden;
-    background: #7ED321;
+    background: $green;
     color: #fff;
 
     &.is-active {
@@ -36,7 +36,7 @@
 .screen__intro {
     width: 100%;
     height: 40%;
-    padding: 20px 15px 0 15px;
+    padding: 30px 15px 0 15px;
     position: relative;
     z-index: 20;
 
@@ -71,20 +71,20 @@
     width: 100%;
     height: 50px;
     background: #fff;
-    border: 2px solid darken($blue, 20); 
+    border: 2px solid darken($red, 20); 
 
     .is-team-left & {
-        border-color: darken($red, 20);
+        border-color: darken($blue, 20);
     }
 }
 
 .click-bar__meter {
     display: block;
     height: 100%;
-    background: $blue;
+    background: $red;
 
     .is-team-left & {
-        background: $red;
+        background: $blue;
     }
 }
 
@@ -96,7 +96,7 @@
     top: 20px;
     left: 50%;
     margin-left: -150px;
-    background: url('/images/logo.png') no-repeat;
+    background: url('/nl.driebit.tugofwar/images/logo.png') no-repeat;
     background-size: 100%;
 }
 
