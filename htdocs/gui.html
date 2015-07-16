@@ -1,50 +1,3 @@
-<!-- <!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>GAME Test</title> -->
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-<!-- </head> -->
-<!-- 
-<body>
-
-  <h1>GUI!! (client)</h1>
-  <div id="name"></div>
-  <img id="photo"/>
-
-  <script src="/js/lib/device.js"></script>
-  <script src="/js/lib/jquery.min.js"></script>
-  <script>
-    //wait for the player object
-    device.on('player', function(player){
-
-      //bind event to values or messages
-      player.on('name', function(name){
-        $('#name').text(name);
-      });
-
-      player.on('photo', function(url){
-        $('#photo').attr('src', url);
-      });
-
-      player.on('iets', function(data){
-        alert(data);
-      })
-
-      player.set('test', 24); //set some test data
-      player.send('testMsg', 'hello world'); //send some test data
-
-    });
-  </script>
-  </script>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
         <script src="/socket.io/socket.io.js"></script>
         <link rel="stylesheet" href="css/build/screen.css">
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
     </head>
 
     <body>

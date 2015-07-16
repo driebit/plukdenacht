@@ -31,8 +31,10 @@ var playerApp = (function() {
             //bind event to values or messages
             playerChannel.on('name', function(name){
               //$('#name').text(name);
-              console.log(name);
-              //alert(name);
+              //console.log('playerchannel on', name);
+              alert('name: ' + name);
+
+              //todo: set name to player object
             });
 
             playerChannel.on('iets', function(data) {
@@ -42,26 +44,37 @@ var playerApp = (function() {
 
             player.on('photo', function(url){
                 //$('#photo').attr('src', url);
-                //alert(url);
+                alert('photo: ' + url);
+
+                //todo: set photo to player object
             });
 
             player.on('iets', function(data){
-                alert(data);
+                //alert(data);
             })
+
+            player.on('isrunning', function()) {
+
+
+
+            }
 
             // player.set('test', 2392039203920930293); //set some test data
             // player.send('testMsg', 'hello world'); //send some test data
 
         });
 
-        playerChannel.on('start', startGame);
+        //test
+        playerChannel.on('state', function() {
+
+            //
+
+        });
 
      
     }
 
     function createGameState() {
-
-
 
         return {
             player: {
@@ -121,6 +134,14 @@ var playerApp = (function() {
         //         team: team
         //     }
         // );
+
+
+        //todo: set player choice
+        //playerChannel.set
+
+
+
+
 
         ui.goToScreen('about-to-start');
 
