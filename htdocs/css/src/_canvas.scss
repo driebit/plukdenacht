@@ -181,6 +181,7 @@
     bottom: 0px;
     right: 0px;
     border: 1px solid red;
+    list-style: none;
 
     .member {
         width: 88px;
@@ -197,4 +198,8 @@
             border: 2px solid #fff;
         }
     }
+}
+
+.team-members--right {
+    list-style: none;
 }
