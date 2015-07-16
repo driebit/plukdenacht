@@ -68,3 +68,34 @@
     background: $blue;
 }
 
+.btn-play {
+    display: block;
+    width: 300px;
+    height: 300px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    background: $blue;
+    border: none;
+    border-radius: 100%;
+    box-shadow: 0 13px 0 darken($blue, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s;
+    outline: 0;
+    font-size: 50px;
+
+    &:active {
+        top: 13px;
+        box-shadow: 0 2px 0 darken($blue, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .is-team-red & {
+        background: $red;
+        box-shadow: 0 13px 0 darken($red, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+
+        &:active {
+            box-shadow: 0 2px 0 darken($red, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+

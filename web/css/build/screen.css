@@ -374,6 +374,7 @@ html, body {
   background: #020032;
   color: #fff;
   overflow: hidden;
+  font-family: 'GeoSlab';
   -webkit-font-smoothing: subpixel-antialiased; }
 
 .screen, .screen--wait,
@@ -386,7 +387,9 @@ html, body {
   top: 0px;
   left: 100%;
   transition: left 0.4s;
-  overflow: hidden; }
+  overflow: hidden;
+  background: #7ED321;
+  color: #fff; }
   .screen.is-active, .is-active.screen--wait,
   .is-active.screen--side,
   .is-active.screen--play,
@@ -399,8 +402,6 @@ html, body {
     left: -100%; }
 
 .screen--side {
-  background: #f7f7f7;
-  color: #4563a6;
   font-family: 'GeoSlab';
   font-size: 33px;
   line-height: 1.2;
@@ -417,6 +418,35 @@ html, body {
     display: block;
     padding: 20px;
     transform: perspective(5em) rotateX(-25deg); }
+
+.play-btn-wrapper {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  bottom: 50px; }
+
+.click-bar-wrapper {
+  width: 80%;
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  font-size: 30px;
+  text-transform: uppercase; }
+
+.click-bar {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border: 2px solid #27385e; }
+  .is-team-red .click-bar {
+    border-color: #981e3b; }
+
+.click-bar__meter {
+  display: block;
+  height: 100%;
+  background: #4563a6; }
+  .is-team-red .click-bar__meter {
+    background: #DA4266; }
 
 .btn, .btn--play {
   display: inline-block;
@@ -473,3 +503,27 @@ html, body {
   left: auto;
   right: 0px;
   background: #4563a6; }
+
+.btn-play {
+  display: block;
+  width: 300px;
+  height: 300px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  background: #4563a6;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 0 13px 0 #364e82, 0 14px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s;
+  outline: 0;
+  font-size: 50px; }
+  .btn-play:active {
+    top: 13px;
+    box-shadow: 0 2px 0 #364e82, 0 3px 3px rgba(0, 0, 0, 0.2); }
+  .is-team-red .btn-play {
+    background: #DA4266;
+    box-shadow: 0 13px 0 #c3264b, 0 14px 3px rgba(0, 0, 0, 0.3); }
+    .is-team-red .btn-play:active {
+      box-shadow: 0 2px 0 #c3264b, 0 3px 3px rgba(0, 0, 0, 0.2); }
