@@ -4,40 +4,6 @@
         <title>Vet coole touwtrek game</title>
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-            // (function () {
-            //     'use strict';
-
-            //     var socket;
-
-            //     window.addEventListener('DOMContentLoaded', function () {
-            //         var docLoc = document.location,
-            //             port   = docLoc.port,
-            //             socketUrl = '//' + docLoc.hostname;
-
-            //         if (port !== '') {
-            //             socketUrl += ':' + port;
-            //         }
-
-            //         socketUrl += '/players';
-
-            //         socket = io(socketUrl);
-
-            //         socket.on('message', function (data) {
-            //             var messages = document.getElementById('messages'),
-            //                 html = messages.innerHTML;
-
-            //             html += data.message + '<br/>';
-
-            //             messages.innerHTML = html;
-            //         });
-
-            //         document.querySelector('button').addEventListener('click', function () {
-            //             socket.emit('message', {'message': Date.now() });
-            //         });
-            //     });
-            // })();
-        </script>
         <link rel="stylesheet" href="css/build/screen.css">
     </head>
 
@@ -49,6 +15,9 @@
         <div id="side" class="screen--side is-active">
             <div class="screen__intro">
                 <span>Aan welke kant van het scherm zit je?</span>
+    
+                <button id="player-left" class="btn-side btn-side--left">Links</button>
+                <button id="player-right" class="btn-side btn-side--right">rechts</button>
             </div>
             <button id="player-left" class="btn-side btn-side--left"><span>Links</span></button>
             <button id="player-right" class="btn-side btn-side--right"><span>rechts</span></button>
@@ -64,11 +33,10 @@
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
         <script src="js/player/ui.js"></script>
-        <script src="js/player/imagecapture.js"></script>
-        <script src="js/player/player.js"></script>
+        <script src="js/player/playerApp.js"></script>
 
         <script>
-            player.init();
+            playerApp.init();
         </script>
         
     </body>

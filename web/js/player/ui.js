@@ -4,6 +4,7 @@ var ui = (function() {
 
         console.log('init ui module');
 
+        //handlers
         $('#player-left').on('click', function() {
             handleGroupSelect('left')
         });
@@ -12,7 +13,14 @@ var ui = (function() {
             handleGroupSelect('right')
         });
 
+        $('#tapButton').on('click', playerApp.handleTap);
+
+        
+
+
     }
+
+    //console.log(playerApp);
 
 
     function handleGroupSelect(side) {
