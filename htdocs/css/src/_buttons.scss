@@ -21,7 +21,7 @@
     top: 40%;
     left: 0px;
     z-index: 10;
-    background: $red;
+    background: $blue;
     border: none;
     text-transform: uppercase;
     color: #fff;
@@ -65,7 +65,7 @@
 .btn-side--right {
     left: auto;
     right: 0px;
-    background: $blue;
+    background: $red;
 }
 
 .btn-play {
@@ -76,25 +76,25 @@
     margin: 0 auto;
     position: relative;
     top: 0;
-    background: $blue;
+    background: $red;
     border: none;
     border-radius: 100%;
-    box-shadow: 0 13px 0 darken($blue, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 13px 0 darken($red, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
     transition: all 0.1s;
     outline: 0;
     font-size: 50px;
 
     &:active {
         top: 13px;
-        box-shadow: 0 2px 0 darken($blue, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 0 darken($red, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
     }
 
     .is-team-left & {
-        background: $red;
-        box-shadow: 0 13px 0 darken($red, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+        background: $blue;
+        box-shadow: 0 13px 0 darken($blue, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
 
         &:active {
-            box-shadow: 0 2px 0 darken($red, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 0 darken($blue, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
         }
     }
 }
