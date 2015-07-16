@@ -451,6 +451,7 @@ html, body {
 .click-bar__meter {
   display: block;
   height: 100%;
+  width: 1%;
   background: #DA4266; }
   .is-team-left .click-bar__meter {
     background: #4563a6; }
