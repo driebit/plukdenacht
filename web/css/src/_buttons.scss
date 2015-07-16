@@ -12,6 +12,90 @@
 }
 
 .btn-side {
-    @extend .btn;
-    
+    display: block;
+    width: 48%;
+    height: 60%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 0px;
+    z-index: 10;
+    background: $red;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 2px;
+
+    span {
+        position: relative;
+        z-index: 10;
+
+        &:before {
+            content: '';
+            box-sizing: content-box;
+            width: 100%;
+            height: 100%;
+            padding: 10px 12px 5px 12px;
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            z-index: -1;
+            border-radius: 5px;
+            border: 3px solid #fff;
+
+        }
+    }
+
+    &:after {
+        content: '';
+        width: 90%;
+        height: 91%;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        z-index: 5;
+        background: url('/images/groepje-iconen.svg') center top;
+        background-repeat: space;
+        opacity: 0.3;
+    }
 }
+
+.btn-side--right {
+    left: auto;
+    right: 0px;
+    background: $blue;
+}
+
+.btn-play {
+    display: block;
+    width: 300px;
+    height: 300px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    background: $blue;
+    border: none;
+    border-radius: 100%;
+    box-shadow: 0 13px 0 darken($blue, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.1s;
+    outline: 0;
+    font-size: 50px;
+
+    &:active {
+        top: 13px;
+        box-shadow: 0 2px 0 darken($blue, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .is-team-left & {
+        background: $red;
+        box-shadow: 0 13px 0 darken($red, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+
+        &:active {
+            box-shadow: 0 2px 0 darken($red, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+

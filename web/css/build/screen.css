@@ -355,6 +355,13 @@ td,
 th {
   padding: 0; }
 
+@font-face {
+  font-family: 'GeoSlab';
+  src: url("../fonts/geo703xb-webfont.eot");
+  src: url("../fonts/geo703xb-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/geo703xb-webfont.woff2") format("woff2"), url("../fonts/geo703xb-webfont.woff") format("woff"), url("../fonts/geo703xb-webfont.ttf") format("truetype"), url("../fonts/geo703xb-webfont.svg#geoslab703_xbd_btextra_bold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
 html {
   box-sizing: border-box; }
 
@@ -365,37 +372,201 @@ html, body {
   width: 100%;
   height: 100%;
   background: #020032;
-  color: #fff; }
+  color: #fff;
+  overflow: hidden;
+  font-family: 'GeoSlab';
+  -webkit-font-smoothing: subpixel-antialiased; }
 
-.screen, .screen--wait,
-.screen--side,
+.screen, .screen--side,
 .screen--play,
-.screen--score {
+.screen--score,
+.screen--about-to-start {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0px;
   left: 100%;
-  border: 1px solid red;
-  transition: left 0.4s; }
-  .screen.is-active, .is-active.screen--wait,
-  .is-active.screen--side,
+  transition: left 0.4s;
+  overflow: hidden;
+  background: #7ED321;
+  color: #fff; }
+  .screen.is-active, .is-active.screen--side,
   .is-active.screen--play,
-  .is-active.screen--score {
+  .is-active.screen--score,
+  .is-active.screen--about-to-start {
     left: 0px; }
-  .screen.is-not-active, .is-not-active.screen--wait,
-  .is-not-active.screen--side,
+  .screen.is-not-active, .is-not-active.screen--side,
   .is-not-active.screen--play,
-  .is-not-active.screen--score {
+  .is-not-active.screen--score,
+  .is-not-active.screen--about-to-start {
     left: -100%; }
 
 .screen--side {
-  background: red; }
+  font-family: 'GeoSlab';
+  font-size: 33px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center; }
 
-.btn, .btn--play, .btn-side {
+.screen__intro {
+  width: 100%;
+  height: 40%;
+  padding: 20px 15px 0 15px;
+  position: relative;
+  z-index: 20; }
+  .screen__intro span {
+    display: block;
+    padding: 20px;
+    transform: perspective(5em) rotateX(-25deg); }
+
+.play-btn-wrapper {
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  bottom: 50px; }
+
+.click-bar-wrapper {
+  width: 80%;
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  font-size: 30px;
+  text-transform: uppercase; }
+
+.click-bar {
+  width: 100%;
+  height: 50px;
+  background: #fff;
+  border: 2px solid #27385e; }
+  .is-team-left .click-bar {
+    border-color: #981e3b; }
+
+.click-bar__meter {
+  display: block;
+  height: 100%;
+  background: #4563a6; }
+  .is-team-left .click-bar__meter {
+    background: #DA4266; }
+
+.wait-logo {
+  width: 300px;
+  height: 380px;
+  margin-top: 10px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -150px;
+  background: url("/images/logo.png") no-repeat;
+  background-size: 100%; }
+
+.screen--about-to-start p {
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  font-size: 40px;
+  text-transform: uppercase; }
+
+.screen--score {
+  font-size: 40px; }
+  .screen--score p {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    font-size: 40px;
+    text-transform: uppercase; }
+
+.score-avatar {
+  width: 200px;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin-left: -100px;
+  text-transform: uppercase; }
+  .score-avatar img {
+    border-radius: 50%;
+    border: 5px solid #fff; }
+
+.btn, .btn--play {
   display: inline-block;
   height: 50px;
   padding: 10px 40px;
   cursor: pointer;
   border: none;
   font-size: 20px; }
+
+.btn-side {
+  display: block;
+  width: 48%;
+  height: 60%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 0px;
+  z-index: 10;
+  background: #DA4266;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: 2px; }
+  .btn-side span {
+    position: relative;
+    z-index: 10; }
+    .btn-side span:before {
+      content: '';
+      box-sizing: content-box;
+      width: 100%;
+      height: 100%;
+      padding: 10px 12px 5px 12px;
+      position: absolute;
+      top: -10px;
+      left: -15px;
+      z-index: -1;
+      border-radius: 5px;
+      border: 3px solid #fff; }
+  .btn-side:after {
+    content: '';
+    width: 90%;
+    height: 91%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 5;
+    background: url("/images/groepje-iconen.svg") center top;
+    background-repeat: space;
+    opacity: 0.3; }
+
+.btn-side--right {
+  left: auto;
+  right: 0px;
+  background: #4563a6; }
+
+.btn-play {
+  display: block;
+  width: 300px;
+  height: 300px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  background: #4563a6;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 0 13px 0 #364e82, 0 14px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s;
+  outline: 0;
+  font-size: 50px; }
+  .btn-play:active {
+    top: 13px;
+    box-shadow: 0 2px 0 #364e82, 0 3px 3px rgba(0, 0, 0, 0.2); }
+  .is-team-left .btn-play {
+    background: #DA4266;
+    box-shadow: 0 13px 0 #c3264b, 0 14px 3px rgba(0, 0, 0, 0.3); }
+    .is-team-left .btn-play:active {
+      box-shadow: 0 2px 0 #c3264b, 0 3px 3px rgba(0, 0, 0, 0.2); }

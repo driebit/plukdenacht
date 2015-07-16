@@ -129,7 +129,7 @@ var canvasApp = (function() {
         renderPlayers();
         renderTotals();
     }
-    
+
     return {
         init: init,
         render: render,
