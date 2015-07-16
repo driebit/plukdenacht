@@ -49,12 +49,10 @@ var ui = (function() {
     function buildScoreScreen() {
 
         console.log('build score screen');
-
+        $('.score-debug').html(playerApp.gameState.player.taps);
     }
 
-
     return {
-
         init: init,
         goToScreen: goToScreen
 

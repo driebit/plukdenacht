@@ -4,7 +4,7 @@ var playerApp = (function() {
         currentScreen,
         playerObject,
         config = {
-            gameLength: 5,
+            gameLength: 4,
             gameTickLength: 2000
         },
         gameState = createGameState(),
@@ -15,34 +15,11 @@ var playerApp = (function() {
         console.log('init player app, start init other modules');
 
         ui.init();
-
-        var docLoc = document.location,
-            port   = docLoc.port,
-            socketUrl = '//' + docLoc.hostname;
-
-        if (port !== '') {
-            socketUrl += ':' + port;
-        }
-
-        socketUrl += '/players';
-
-        socket = io(socketUrl);
-
-        // socket.on('message', function (data) {
-        //     var messages = document.getElementById('messages'),
-        //         html = messages.innerHTML;
-
-        //     html += data.message + '<br/>';
-
-        //     messages.innerHTML = html;
-        // });
-
-
-        //handleTeamChoice('left');
+        messaging.init();
 
         //player events
-        socket.on('...', startGame);
-        socket.on('...', endGame);
+        // socket.on('...', startGame);
+        // socket.on('...', endGame);
 
         ui.goToScreen('choose-side');
       
@@ -102,12 +79,12 @@ var playerApp = (function() {
 
         console.log('handle team choice');
 
-        socket.emit('message', {
-                type: 'handle_team_choice',
-                player: gameState.dummyPlayer,
-                team: team
-            }
-        );
+        // socket.emit('message', {
+        //         type: 'handle_team_choice',
+        //         player: gameState.player,
+        //         team: team
+        //     }
+        // );
 
         ui.goToScreen('about-to-start');
 
@@ -115,11 +92,12 @@ var playerApp = (function() {
 
     function handleTap() {
        gameState.taps++;
-       gameState.dummyPlayer.taps++;
+       gameState.player.taps++;
     }
 
     return {
         init: init,
+        gameState,
         handleTap,
         handleTeamChoice,
         startGame
