@@ -666,7 +666,8 @@ html, body {
     width: 100%;
     position: absolute;
     bottom: 0px;
-    background: #DA4266; }
+    background: #DA4266;
+    transition: all 0.3s; }
 
 .power-meter--left {
   left: 250px;
@@ -674,7 +675,8 @@ html, body {
   .power-meter--left:after {
     background: #4563a6; }
   .power-meter--left span {
-    background: #4563a6; }
+    background: #4563a6;
+    transition: all 0.3s; }
 
 .rope {
   width: 1152px;
@@ -716,13 +718,11 @@ html, body {
   height: 450px;
   position: absolute;
   bottom: 0px;
-  right: 0px;
-  border: 1px solid blue; }
+  right: 0px; }
 
 .player-wrapper__team-left {
   right: auto;
-  left: 0px;
-  border-color: red; }
+  left: 0px; }
 
 .block {
   width: 100%;
@@ -730,7 +730,6 @@ html, body {
   position: absolute;
   bottom: 0px;
   right: -30px;
-  border: 1px solid red;
   list-style: none; }
   .block.team-members--left {
     right: auto;

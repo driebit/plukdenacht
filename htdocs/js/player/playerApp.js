@@ -108,12 +108,12 @@ var playerApp = (function() {
 
         // };
 
-        // for (var i = 0; i<120; i++) {
-        //     playerChannel.set('team', 'right');
+        for (var i = 0; i<22; i++) {
+            playerChannel.set('team', team);
 
-        // };
+        };
 
-        playerChannel.set('team', team);
+        //playerChannel.set('team', team);
 
         ui.goToScreen('about-to-start');
 

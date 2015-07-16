@@ -124,8 +124,10 @@
 
         setTimeout(requestPlayer, 10);
       }
-      
+
       canvasApp.startCountDown(60 * 0.6, $('#countdown__minutes'), canvasApp.startGame);
+      
+      setInterval(canvasApp.render, 1000);
 
       requestPlayer();
 

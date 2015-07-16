@@ -14,7 +14,7 @@ var canvasApp = (function() {
         console.log('init canvas app, start init other modules');
 
         gamestate = createGame();
-        //gamestate = fakeGame();
+        // gamestate = fakeGame();
 
     }
     
@@ -22,16 +22,16 @@ var canvasApp = (function() {
         return {
             players: [
                 {name: "Dirk",
-                 team: 'A',
+                 team: 'left',
                  score: 10},
                 {name: "Danny",
-                 team: 'A',
+                 team: 'left',
                  score: 100},
                 {name: "Dorien",
-                 team: 'B',
+                 team: 'right',
                  score: 50},
                 {name: "Casper",
-                 team: 'B',
+                 team: 'right',
                  score: 21}
             ]
         }
@@ -82,9 +82,7 @@ var canvasApp = (function() {
                 clearInterval(interval);
             }
         }, 1000);
-    }
-    
-    
+    }  
     
     function startGame() {
         gamestate.players.map(function(player) {
@@ -98,9 +96,19 @@ var canvasApp = (function() {
         })
     }
     
+    // Scoring
+    
+    function currentTotal() {
+        var t = gamestate.players.map(function(player) {
+            return player.score;
+        }).reduce(function(total, next) {
+            return total + next;
+        });
+        return t;
+    }
     
     function currentTeamTotal(team) {
-        t = gamestate.players.filter(function(player) {
+        var t = gamestate.players.filter(function(player) {
             return player.team === team;
         }).map(function(player) {
             return player.score;
@@ -110,6 +118,10 @@ var canvasApp = (function() {
         return t;
     }
     
+    function relativeTeamTotal(team){
+        return 100 * currentTeamTotal(team) / currentTotal(); 
+    }
+     
     // Rendering
 
     function renderAddPlayer(id) {
@@ -125,24 +137,22 @@ var canvasApp = (function() {
 
         if(currentMembersInBlock + 1 > maxMembersInRow) {
             currentRow[player.team]++;
-            // if(currentRow[player.team] % 2 != 0) {
-            //     maxMembersInRow--;
-            // }
+            if(currentRow[player.team] % 2 != 0) {
+                maxMembersInRow--;
+            }
             theCurrentRow = currentRow[player.team];
         }
 
         currentMembersBlock.append(newplayer);  
-
         
     }
     
     function renderTotals() {
-        $("#totalTeamA").html(currentTeamTotal('A'));
-        $("#totalTeamB").html(currentTeamTotal('B'));
+        $("#totalTeamA").height(relativeTeamTotal('left') + "%");
+        $("#totalTeamB").height(relativeTeamTotal('right') + "%");
     }
     
     function render(){
-        //renderPlayers();
         renderTotals();
     }
     
@@ -157,6 +167,7 @@ var canvasApp = (function() {
         getPlayer: getPlayer,
         setPlayerProp: setPlayerProp,
         currentTeamTotal: currentTeamTotal,
+        relativeTeamTotal: relativeTeamTotal,
         startCountDown: startCountDown,
         startGame: startGame,
         endGame: endGame,

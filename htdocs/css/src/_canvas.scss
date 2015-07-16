@@ -109,14 +109,16 @@
         position: absolute;
         bottom: 0px;
         background: $red;
+        transition: all 0.3s;
     }
 }
 
 .power-meter--left {
+    @extend .power-meter--right;
     left: 250px;
     right: auto;
 
-    @extend .power-meter--right;
+    
 
     &:after {
         background: $blue;
@@ -124,6 +126,7 @@
 
     span {
         background: $blue;
+        transition: all 0.3s;
     }
 }
 
@@ -174,13 +177,11 @@
     position: absolute;
     bottom: 0px;
     right: 0px;
-    border: 1px solid blue;
 }
 
 .player-wrapper__team-left {
     right: auto;
     left: 0px;
-    border-color: red;
 }
 
 .block {
@@ -189,7 +190,6 @@
     position: absolute;
     bottom: 0px;
     right: -30px;
-    border: 1px solid red;
     list-style: none;
 
     &.team-members--left {
