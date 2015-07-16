@@ -21,7 +21,7 @@
         <div class="power-meter--right"><span id="totalTeamB" style="height: 10%;"></span></div>
         <div class="countdown">
             <p class="countdown_label">pull!!! <!-- Game starting in--><!-- get ready --></p>
-            <span class="countdown__minutes">00</span>:<span class="countdown__seconds">30</span>
+            <span id="countdown__minutes"></span>
         </div>
 
         <div class="player-wrapper__team-left">
@@ -92,7 +92,7 @@
         setTimeout(requestPlayer, 10);
       }
       
-      canvasApp.startCountDown(60 * 0.1, $('#timer'), canvasApp.startGame());
+      canvasApp.startCountDown(60 * 0.1, $('#countdown__minutes'), canvasApp.startGame);
 
       requestPlayer();
 

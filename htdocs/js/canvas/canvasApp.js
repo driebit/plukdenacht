@@ -79,14 +79,14 @@ var canvasApp = (function() {
     
     function startGame() {
         gamestate.players.map(function(player) {
-          
+            player.channel.set('running', 1);
         })
     }
     
     function endGame() {
-        // gamestate.players.map(function(player) {
-        //   player.set({running: 0});
-        // })
+        gamestate.players.map(function(player) {
+            player.channel.set('running', 0);
+        })
     }
     
     
@@ -145,6 +145,8 @@ var canvasApp = (function() {
         setPlayerProp: setPlayerProp,
         currentTeamTotal: currentTeamTotal,
         startCountDown: startCountDown,
+        startGame: startGame,
+        endGame: endGame,
         state: state
     }
 
