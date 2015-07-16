@@ -13,21 +13,22 @@
     <body>
       
         <div id="side" class="screen--side">
+            <button id="hitit" class="btn-play"></button>
             <div class="screen__intro">
-                <span>Aan welke kant van het scherm zit je?</span>
+                <span>On which side of the screen are you sitting?</span>
             </div>
-            <button id="player-left" class="btn-side btn-side--left"><span>Links</span></button>
-            <button id="player-right" class="btn-side btn-side--right"><span>rechts</span></button>
+            <button id="player-left" class="btn-side btn-side--left"><span>left</span></button>
+            <button id="player-right" class="btn-side btn-side--right"><span>right</span></button>
         </div>
         <div id="" class="screen--about-to-start">
             <div class="wait-logo"></div>
-            <p>Nog even geduld! </p>
+            <p>Be ready! </p>
             <button id="debug-start">DEBUG START</button>
         </div>
 
         <div id="play" class="screen--play is-team-red">
             <div class="click-bar-wrapper">
-                Klik meter
+                Strength meter
                 <div class="click-bar"><span class="click-bar__meter" style="width: 100px;"></span></div>
             </div>
             <div class="play-btn-wrapper">
@@ -36,8 +37,7 @@
         </div>
 
         <div id="score" class="screen--score">
-
-            <p>Je hebt <div id="score-total-taps"></div> keer geklikt in 40 seconden, \o/</p>
+            <p>You have clicked <span id="score-total-taps"></span> times, you rock! \o/</p>
             <div class="score-avatar">
                 <img src="http://placehold.it/200/200">
             </div>

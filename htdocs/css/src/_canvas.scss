@@ -30,28 +30,33 @@
     }
 }
 
+@-webkit-keyframes blink {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .canvas--play {
     @extend .canvas;
 
     .countdown {
         width: 100%;
         position: absolute;
-        top: 290px;
+        bottom: 480px;
         text-align: center;
         font-size: 120px;
         line-height: 1;
     }
+}
 
-    p {
-        width: 100%;
-        padding: 0 15px;
-        margin: 0;
-        position: absolute;
-        bottom: 20px;
-        text-align: center;
-        font-size: 60px;
-        text-transform: uppercase;
-    }
+.countdown_label {
+    width: 500px;
+    margin: 0 auto;
+    font-size: 60px;
+    line-height: 1;
+    text-align: center;
+    transition: all 0.1s;
+    opacity: 1;
+    //-webkit-animation: blink 1s infinite; 
 }
 
 .canvas__top__logo {
