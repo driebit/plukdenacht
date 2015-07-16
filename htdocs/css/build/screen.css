@@ -653,8 +653,20 @@ html, body {
   bottom: 118px;
   z-index: 100000; }
 
+.block--1 {
+  bottom: 165px;
+  z-index: 90000; }
+
+.block--2 {
+  bottom: 75px;
+  z-index: 110000; }
+
+.block--3 {
+  bottom: 205px;
+  z-index: 80000; }
+
 .player-wrapper__team-right .block--0 {
-  bottom: 130px; }
+  bottom: 132px; }
 
 .team-members--left {
   list-style: none; }
@@ -668,8 +680,8 @@ html, body {
     .team-members--left .member img {
       width: 40px;
       position: absolute;
-      top: -5px;
-      right: 1px;
+      top: -15px;
+      left: -5px;
       border-radius: 100%;
       border: 2px solid #fff; }
 
@@ -685,7 +697,7 @@ html, body {
     .team-members--right .member img {
       width: 40px;
       position: absolute;
-      top: -5px;
+      top: -3px;
       right: 1px;
       border-radius: 100%;
       border: 2px solid #fff; }
