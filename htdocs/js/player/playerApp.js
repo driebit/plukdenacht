@@ -4,8 +4,8 @@ var playerApp = (function() {
         currentScreen,
         playerObject,
         config = {
-            gameLength: 4,
-            gameTickLength: 2000
+            gameLength: 6,
+            gameTickLength: 2
         },
         gameState = createGameState(),
         playerChannel,
@@ -18,8 +18,6 @@ var playerApp = (function() {
         ui.init();
         
         device.on('player', function(player) {
-
-            //async
 
             playerChannel = player;
 
@@ -51,7 +49,6 @@ var playerApp = (function() {
 
         //temp
         ui.goToScreen('choose-side');
-
      
     }
 
@@ -63,11 +60,10 @@ var playerApp = (function() {
                 name: 'danny',
                 photo: null,
                 team: 'left',
-                taps: 0
+                score: 0
             },
             timeRemaining: 0,
-            gameTickTimer: null,
-            taps: 0
+            gameTickTimer: null
         }
 
     }
@@ -77,7 +73,7 @@ var playerApp = (function() {
         console.log('start game');  
 
         //start timer
-        gameState.gameTickTimer = window.setInterval(gameTick, config.gameTickLength);
+        gameState.gameTickTimer = window.setInterval(gameTick, (config.gameTickLength * 1000));
         gameState.timeRemaining = config.gameLength;
 
         ui.goToScreen('play');
@@ -94,15 +90,14 @@ var playerApp = (function() {
 
     function gameTick() {
 
-        console.log('gametick', gameState.timeRemaining);
-        console.log('send: ' + gameState.taps);
+        playerChannel.set('score', gameState.player.score);
 
-        gameState.taps = 0;
-        gameState.timeRemaining--;
+        gameState.timeRemaining = gameState.timeRemaining - config.gameTickLength;
 
         if(gameState.timeRemaining < 0) {
             stopGame();
         }
+
     }
 
 
@@ -118,8 +113,8 @@ var playerApp = (function() {
     }
 
     function handleTap() {
-       gameState.taps++;
-       gameState.player.taps++;
+       gameState.score++;
+       gameState.player.score++;
     }
 
     return {
