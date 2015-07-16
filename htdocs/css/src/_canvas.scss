@@ -133,6 +133,7 @@
     position: absolute;
     bottom: 237px;
     left: 50%;
+    z-index: 20;
     background: url('/nl.driebit.tugofwar/images/touw.svg') no-repeat;
     transform: translateX(-50%);
 
@@ -156,6 +157,16 @@
     }
 }
 
+.rope__flag {
+    width: 50px;
+    height: 75px;
+    position: absolute;
+    left: 550px;
+    z-index: 10;
+    background: url('/nl.driebit.tugofwar/images/flag.svg') no-repeat;
+    background-size: 100% auto;
+}
+
 .player-wrapper__team-right,
 .player-wrapper__team-left  {
     width: 40%;
@@ -177,13 +188,13 @@
     height: 111px;
     position: absolute;
     bottom: 0px;
-    right: 0px;
+    right: -30px;
     border: 1px solid red;
     list-style: none;
 
     &.team-members--left {
         right: auto;
-        left: 0px;
+        left: -30px;
     }
 }
 

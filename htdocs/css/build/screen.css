@@ -384,6 +384,79 @@ html, body {
   font-family: 'GeoSlab';
   -webkit-font-smoothing: subpixel-antialiased; }
 
+.btn-side {
+  display: block;
+  width: 48%;
+  height: 60%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 0px;
+  z-index: 10;
+  background: #4563a6;
+  border: none;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 24px;
+  letter-spacing: 2px; }
+  .btn-side span {
+    position: relative;
+    z-index: 10; }
+    .btn-side span:before {
+      content: '';
+      box-sizing: content-box;
+      width: 100%;
+      height: 100%;
+      padding: 10px 12px 5px 12px;
+      position: absolute;
+      top: -10px;
+      left: -15px;
+      z-index: -1;
+      border-radius: 5px;
+      border: 3px solid #fff; }
+  .btn-side:after {
+    content: '';
+    width: 90%;
+    height: 91%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 5;
+    background: url("/nl.driebit.tugofwar/images/groepje-iconen.svg") center top;
+    background-repeat: space;
+    opacity: 0.3; }
+
+.btn-side--right {
+  left: auto;
+  right: 0px;
+  background: #DA4266; }
+
+.btn-play {
+  display: block;
+  width: 252px;
+  height: 252px;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+  background: #417505 url("/nl.driebit.tugofwar/images/bull.svg") center center no-repeat;
+  border: none;
+  border-radius: 100%;
+  box-shadow: 0 13px 0 #264403, 0 14px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0s;
+  outline: 0;
+  font-size: 50px; }
+  .btn-play:active {
+    top: 13px;
+    box-shadow: 0 2px 0 #264403, 0 3px 3px rgba(0, 0, 0, 0.2);
+    background-image: url("/nl.driebit.tugofwar/images/bull-hit.svg"); }
+  .is-team-left .btn-play {
+    background: #417505 url("/nl.driebit.tugofwar/images/eagle.svg") center center no-repeat; }
+    .is-team-left .btn-play:active {
+      background-image: url("/nl.driebit.tugofwar/images/eagle-hit.svg");
+      box-shadow: 0 2px 0 #264403, 0 3px 3px rgba(0, 0, 0, 0.2); }
+
 .screen, .screen--side,
 .screen--play,
 .screen--score,
@@ -433,26 +506,28 @@ html, body {
   bottom: 50px; }
 
 .click-bar-wrapper {
-  width: 80%;
+  width: 260px;
   position: absolute;
-  top: 50px;
-  left: 10%;
-  font-size: 30px;
-  text-transform: uppercase; }
+  top: 30px;
+  left: 50%;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #417505;
+  transform: translateX(-50%); }
 
 .click-bar {
   width: 100%;
-  height: 50px;
-  background: #fff;
-  border: 2px solid #981e3b; }
-  .is-team-left .click-bar {
-    border-color: #27385e; }
+  height: 30px;
+  background: #5ca607;
+  border-radius: 4px; }
 
 .click-bar__meter {
   display: block;
   height: 100%;
-  width: 1%;
-  background: #DA4266; }
+  margin-top: 5px;
+  background: #DA4266;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
   .is-team-left .click-bar__meter {
     background: #4563a6; }
 
@@ -606,6 +681,7 @@ html, body {
   position: absolute;
   bottom: 237px;
   left: 50%;
+  z-index: 20;
   background: url("/nl.driebit.tugofwar/images/touw.svg") no-repeat;
   transform: translateX(-50%); }
   .rope:before,
@@ -623,6 +699,15 @@ html, body {
     right: auto;
     left: -30px;
     background: url("/nl.driebit.tugofwar/images/member-left.svg") no-repeat; }
+
+.rope__flag {
+  width: 50px;
+  height: 75px;
+  position: absolute;
+  left: 550px;
+  z-index: 10;
+  background: url("/nl.driebit.tugofwar/images/flag.svg") no-repeat;
+  background-size: 100% auto; }
 
 .player-wrapper__team-right,
 .player-wrapper__team-left {
@@ -643,12 +728,12 @@ html, body {
   height: 111px;
   position: absolute;
   bottom: 0px;
-  right: 0px;
+  right: -30px;
   border: 1px solid red;
   list-style: none; }
   .block.team-members--left {
     right: auto;
-    left: 0px; }
+    left: -30px; }
 
 .block--0 {
   bottom: 118px;
@@ -702,84 +787,3 @@ html, body {
       right: 1px;
       border-radius: 100%;
       border: 2px solid #fff; }
-
-.btn, .btn--play {
-  display: inline-block;
-  height: 50px;
-  padding: 10px 40px;
-  cursor: pointer;
-  border: none;
-  font-size: 20px; }
-
-.btn-side {
-  display: block;
-  width: 48%;
-  height: 60%;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  top: 40%;
-  left: 0px;
-  z-index: 10;
-  background: #4563a6;
-  border: none;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 24px;
-  letter-spacing: 2px; }
-  .btn-side span {
-    position: relative;
-    z-index: 10; }
-    .btn-side span:before {
-      content: '';
-      box-sizing: content-box;
-      width: 100%;
-      height: 100%;
-      padding: 10px 12px 5px 12px;
-      position: absolute;
-      top: -10px;
-      left: -15px;
-      z-index: -1;
-      border-radius: 5px;
-      border: 3px solid #fff; }
-  .btn-side:after {
-    content: '';
-    width: 90%;
-    height: 91%;
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    z-index: 5;
-    background: url("/nl.driebit.tugofwar/images/groepje-iconen.svg") center top;
-    background-repeat: space;
-    opacity: 0.3; }
-
-.btn-side--right {
-  left: auto;
-  right: 0px;
-  background: #DA4266; }
-
-.btn-play {
-  display: block;
-  width: 252px;
-  height: 252px;
-  padding: 0;
-  margin: 0 auto;
-  position: relative;
-  top: 0;
-  background: #417505 url("/nl.driebit.tugofwar/images/bull.svg") center center no-repeat;
-  border: none;
-  border-radius: 100%;
-  box-shadow: 0 13px 0 #264403, 0 14px 3px rgba(0, 0, 0, 0.3);
-  transition: all 0s;
-  outline: 0;
-  font-size: 50px; }
-  .btn-play:active {
-    top: 13px;
-    box-shadow: 0 2px 0 #264403, 0 3px 3px rgba(0, 0, 0, 0.2);
-    background-image: url("/nl.driebit.tugofwar/images/bull-hit.svg"); }
-  .is-team-left .btn-play {
-    background: #417505 url("/nl.driebit.tugofwar/images/eagle.svg") center center no-repeat; }
-    .is-team-left .btn-play:active {
-      background-image: url("/nl.driebit.tugofwar/images/eagle-hit.svg");
-      box-shadow: 0 2px 0 #264403, 0 3px 3px rgba(0, 0, 0, 0.2); }
