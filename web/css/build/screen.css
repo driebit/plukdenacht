@@ -438,14 +438,14 @@ html, body {
   height: 50px;
   background: #fff;
   border: 2px solid #27385e; }
-  .is-team-red .click-bar {
+  .is-team-left .click-bar {
     border-color: #981e3b; }
 
 .click-bar__meter {
   display: block;
   height: 100%;
   background: #4563a6; }
-  .is-team-red .click-bar__meter {
+  .is-team-left .click-bar__meter {
     background: #DA4266; }
 
 .wait-logo {
@@ -542,8 +542,8 @@ html, body {
   .btn-play:active {
     top: 13px;
     box-shadow: 0 2px 0 #364e82, 0 3px 3px rgba(0, 0, 0, 0.2); }
-  .is-team-red .btn-play {
+  .is-team-left .btn-play {
     background: #DA4266;
     box-shadow: 0 13px 0 #c3264b, 0 14px 3px rgba(0, 0, 0, 0.3); }
-    .is-team-red .btn-play:active {
+    .is-team-left .btn-play:active {
       box-shadow: 0 2px 0 #c3264b, 0 3px 3px rgba(0, 0, 0, 0.2); }

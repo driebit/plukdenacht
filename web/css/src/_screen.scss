@@ -73,7 +73,7 @@
     background: #fff;
     border: 2px solid darken($blue, 20); 
 
-    .is-team-red & {
+    .is-team-left & {
         border-color: darken($red, 20);
     }
 }
@@ -83,7 +83,7 @@
     height: 100%;
     background: $blue;
 
-    .is-team-red & {
+    .is-team-left & {
         background: $red;
     }
 }
