@@ -11,8 +11,36 @@
 </head>
 
 <body>
+   <div id="info" class="canvas--play is-active">
+        <div class="canvas__top">
+            <div class="canvas__top__team-left"></div>
+            <div class="canvas__top__logo"></div>
+            <div class="canvas__top__team-right"></div>
+        </div>
+        <div class="power-meter--left"><span id="totalTeamA" style="height: 10%;"></span></div>
+        <div class="power-meter--right"><span id="totalTeamB" style="height: 10%;"></span></div>
+        <div class="countdown">
+            <span class="countdown__minutes">00</span>:<span class="countdown__seconds">30</span>
+        </div>
 
-  <h1>GAME!! (canvas)</h1>
+        <div class="player-wrapper">
+            <div class="player-wrapper__team-left">
+                <ul id="playersTeamA" class="team-members--left">
+                    <li class="member">
+                        <img src="http://masswallpapers.mobi/wp-content/uploads/charlie-sheen-lucas-football-wallpapers-3.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div class="rope"></div>
+            <div >
+                <ul id="playersTeamB" class="player-wrapper__team-right">
+                    <li class="member">
+                        <img src="http://masswallpapers.mobi/wp-content/uploads/charlie-sheen-lucas-football-wallpapers-3.jpg" alt="">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
   <div id='players'></div>
 

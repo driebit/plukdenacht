@@ -26,41 +26,42 @@ var playerApp = (function() {
 
         device.on('player', function(player){
 
-        playerChannel = player;
+            playerChannel = player;
 
-          //bind event to values or messages
-          playerChannel.on('name', function(name){
-            //$('#name').text(name);
-            //alert(name);
-          });
+            //bind event to values or messages
+            playerChannel.on('name', function(name){
+              //$('#name').text(name);
+              console.log(name);
+              //alert(name);
+            });
 
-          playerChannel.on('iets', function(data) {
-            //alert('iets', data );
-            console.log(data);
-          });
+            playerChannel.on('iets', function(data) {
+                //alert('iets', data );
+                console.log(data);
+            });
 
-          // player.on('photo', function(url){
-          //   //$('#photo').attr('src', url);
-          //   //alert(url);
-          // });
+            player.on('photo', function(url){
+                //$('#photo').attr('src', url);
+                //alert(url);
+            });
 
-          // player.on('iets', function(data){
-          //   alert(data);
-          // })
+            player.on('iets', function(data){
+                alert(data);
+            })
 
-          // player.set('test', 2392039203920930293); //set some test data
-          // player.send('testMsg', 'hello world'); //send some test data
+            // player.set('test', 2392039203920930293); //set some test data
+            // player.send('testMsg', 'hello world'); //send some test data
 
         });
 
-
         playerChannel.on('start', startGame);
 
-
-      
+     
     }
 
     function createGameState() {
+
+
 
         return {
             player: {
