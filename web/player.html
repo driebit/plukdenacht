@@ -8,11 +8,12 @@
     </head>
 
     <body>
+
         <div id="wait" class="screen--wait is-active">
             <div class="wait-logo"></div>
         </div>
         <!-- TODO: is-not-active class op het screen dat niet meer actief is, daarna weer weghalen -->
-        <div id="side" class="screen--side ">
+        <div id="side" class="screen--side">
             <div class="screen__intro">
                 <span>Aan welke kant van het scherm zit je?</span>
             </div>
@@ -21,7 +22,10 @@
         </div>
         <div id="" class="screen--about-to-start">
             Nog even geduld!
+            <br><br>
+            <button id="debug-start">DEBUG START</button>
         </div>
+
         <div id="play" class="screen--play is-team-red">
             <div class="click-bar-wrapper">
                 Klik meter
@@ -41,7 +45,9 @@
         <script src="js/player/playerApp.js"></script>
 
         <script>
-            playerApp.init();
+            $( document ).ready(function() {
+                playerApp.init();
+            });
         </script>
         
     </body>

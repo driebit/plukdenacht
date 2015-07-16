@@ -34,10 +34,9 @@ var canvasApp = (function() {
 
         });
 
-
-
-
     }
+
+
 
 
     function createGame() {
@@ -57,13 +56,6 @@ var canvasApp = (function() {
     function addPlayer(player) {
         gamestate.players.push(player);
     }
-
-    
-
-
-
-
-
 
 
 
