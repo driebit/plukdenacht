@@ -107,10 +107,6 @@ var playerApp = (function() {
 
         gameState.timeRemaining = gameState.timeRemaining - config.gameTickLength;
 
-        if(gameState.timeRemaining < 0) {
-            stopGame();
-        }
-
     }
 
     function handleTeamChoice(team) {

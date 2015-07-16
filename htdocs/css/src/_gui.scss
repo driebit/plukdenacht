@@ -1,0 +1,235 @@
+// Buttons
+
+.btn-side {
+    display: block;
+    width: 48%;
+    height: 60%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 0px;
+    z-index: 10;
+    background: $blue;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 2px;
+
+    span {
+        position: relative;
+        z-index: 10;
+
+        &:before {
+            content: '';
+            box-sizing: content-box;
+            width: 100%;
+            height: 100%;
+            padding: 10px 12px 5px 12px;
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            z-index: -1;
+            border-radius: 5px;
+            border: 3px solid #fff;
+
+        }
+    }
+
+    &:after {
+        content: '';
+        width: 90%;
+        height: 91%;
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        z-index: 5;
+        background: url('/nl.driebit.tugofwar/images/groepje-iconen.svg') center top;
+        background-repeat: space;
+        opacity: 0.3;
+    }
+}
+
+.btn-side--right {
+    left: auto;
+    right: 0px;
+    background: $red;
+}
+
+.btn-play {
+    display: block;
+    width: 252px;
+    height: 252px;
+    padding: 0;
+    margin: 0 auto;
+    position: relative;
+    top: 0;
+    background: #417505 url('/nl.driebit.tugofwar/images/bull.svg') center center no-repeat;
+    border: none;
+    border-radius: 100%;
+    box-shadow: 0 13px 0 darken(#417505, 10%), 0 14px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0s;
+    outline: 0;
+    font-size: 50px;
+
+    &:active {
+        top: 13px;
+        box-shadow: 0 2px 0 darken(#417505, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+        background-image: url('/nl.driebit.tugofwar/images/bull-hit.svg');
+    }
+
+    .is-team-left & {
+        background: #417505 url('/nl.driebit.tugofwar/images/eagle.svg') center center no-repeat;
+
+        &:active {
+            background-image: url('/nl.driebit.tugofwar/images/eagle-hit.svg');
+            box-shadow: 0 2px 0 darken(#417505, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+//
+
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    transition: left 0.4s;
+    overflow: hidden;
+    background: $green;
+    color: #fff;
+
+    &.is-active {
+        left: 0px;
+    }
+
+    &.is-not-active {
+        left: -100%;
+    }
+}
+
+.screen--side,
+.screen--play,
+.screen--score,
+.screen--about-to-start {
+    @extend .screen;
+}
+
+.screen--side {
+    font-family: 'GeoSlab';
+    font-size: 33px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.screen__intro {
+    width: 100%;
+    height: 40%;
+    padding: 30px 15px 0 15px;
+    position: relative;
+    z-index: 20;
+
+    span {
+        display: block;
+        padding: 20px;
+        transform: perspective(5em) rotateX(-25deg);        
+    }
+}   
+
+.screen--play {
+
+}
+
+.play-btn-wrapper {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 50px;
+}
+
+.click-bar-wrapper {
+    width: 260px;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #417505;
+    transform: translateX(-50%);
+}
+
+.click-bar {
+    width: 100%;
+    height: 30px;
+    background: lighten(#417505, 10);
+    border-radius: 4px;
+}
+
+.click-bar__meter {
+    display: block;
+    height: 100%;
+    margin-top: 5px;
+    background: $red;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    .is-team-left & {
+        background: $blue;
+    }
+}
+
+.wait-logo {
+    width: 300px;
+    height: 380px;
+    margin-top: 10px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -150px;
+    background: url('/nl.driebit.tugofwar/images/logo.png') no-repeat;
+    background-size: 100%;
+}
+
+.screen--about-to-start {
+    p {
+        width: 100%;
+        margin: 0;
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+}
+
+.screen--score {
+    font-size: 40px;
+
+    p {
+        width: 100%;
+        padding: 0 15px;
+        margin: 0;
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+        font-size: 40px;
+        text-transform: uppercase;
+    }
+}
+
+.score-avatar {
+    width: 200px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -100px;
+    text-transform: uppercase;
+    img {
+        border-radius: 50%;
+        border: 5px solid #fff;
+    }
+}
