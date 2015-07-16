@@ -4,18 +4,10 @@ var playerApp = (function() {
         currentScreen,
         playerObject,
         config = {
-            gameLength: 5
+            gameLength: 5,
+            gameTickLength: 2000
         },
-        dummyPlayer = {
-            id: 1,
-            name: 'danny',
-            image: 'leeg',
-            taps: 0
-        },
-        timeRemaining = 0,
-        gameTickTimer,
-        gameTickLength = 3000,
-        taps = 0,
+        gameState = createGameState(),
         socket;
 
     function init () {
@@ -52,14 +44,24 @@ var playerApp = (function() {
         socket.on('...', startGame);
         socket.on('...', endGame);
 
-
-        //temp
-        //startGame();
-
         ui.goToScreen('choose-side');
+      
+    }
 
+    function createGameState() {
 
-       
+        return {
+            player: {
+                id: 1,
+                name: 'danny',
+                image: 'leeg',
+                taps: 0
+            },
+            timeRemaining: 0,
+            gameTickTimer: null,
+            taps: 0
+        }
+
     }
 
     function startGame() {
@@ -67,35 +69,32 @@ var playerApp = (function() {
         console.log('start game');  
 
         //start timer
-        gameTickTimer = window.setInterval(gameTick, gameTickLength);
-        timeRemaining = config.gameLength;
+        gameState.gameTickTimer = window.setInterval(gameTick, config.gameTickLength);
+        gameState.timeRemaining = config.gameLength;
 
         ui.goToScreen('play');
-
 
     }
 
     function endGame() {
 
-        clearInterval(gameTickTimer);
+        clearInterval(gameState.gameTickTimer);
         console.log('game ended');
-        ui.goToScreen('end');
+        ui.goToScreen('score');
 
     }
 
-
     function gameTick() {
 
-        console.log('gametick', timeRemaining);
-        console.log('send: ' + taps);
+        console.log('gametick', gameState.timeRemaining);
+        console.log('send: ' + gameState.taps);
 
-        taps = 0;
-        timeRemaining--;
+        gameState.taps = 0;
+        gameState.timeRemaining--;
 
-        if(timeRemaining < 0) {
+        if(gameState.timeRemaining < 0) {
             endGame();
         }
-
     }
 
 
@@ -105,7 +104,7 @@ var playerApp = (function() {
 
         socket.emit('message', {
                 type: 'handle_team_choice',
-                player: dummyPlayer,
+                player: gameState.dummyPlayer,
                 team: team
             }
         );
@@ -114,9 +113,9 @@ var playerApp = (function() {
 
     }
 
-
     function handleTap() {
-        taps++;
+       gameState.taps++;
+       gameState.dummyPlayer.taps++;
     }
 
     return {

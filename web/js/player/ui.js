@@ -13,14 +13,14 @@ var ui = (function() {
             handleGroupSelect('right')
         });
 
-        $('#tap').on('click', playerApp.handleTap);
+        $('#hitit').on('click', playerApp.handleTap);
         $('#debug-start').on('click', playerApp.startGame);
 
     }
 
     function handleGroupSelect(side) {
+        $('div[class^="screen--"]').addClass('is-team-' + side);
         playerApp.handleTeamChoice(side);
-
     }
 
     function goToScreen(screen) {
@@ -36,11 +36,22 @@ var ui = (function() {
             $('.screen--side').addClass('is-active');
         } else if(screen == 'about-to-start') {
             $('.screen--about-to-start').addClass('is-active');
-        } else if ('play') {
+        } else if(screen == 'play') {
             $('.screen--play').addClass('is-active');
+        } else if (screen == 'score') {
+            $('.screen--score').addClass('is-active');
+            buildScoreScreen();
         }
 
     }
+
+
+    function buildScoreScreen() {
+
+        console.log('build score screen');
+
+    }
+
 
     return {
 
