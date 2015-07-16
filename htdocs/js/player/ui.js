@@ -14,6 +14,7 @@ var ui = (function() {
         });
 
         $('#hitit').on('click', playerApp.handleTap);
+
         $('#debug-start').on('click', playerApp.startGame);
 
     }
@@ -47,7 +48,10 @@ var ui = (function() {
 
     function buildScoreScreen() {
         console.log('build score screen');
+        
         $('#score-total-taps').html(playerApp.gameState.player.score);
+        $('.score-avatar img:eq(0)').attr('src', playerApp.gameState.player.photo);
+
     }
 
     return {
