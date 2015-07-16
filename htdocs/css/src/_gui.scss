@@ -176,6 +176,7 @@
     background: $red;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
+    transition: all 0.2s;
 
     .is-team-left & {
         background: $blue;

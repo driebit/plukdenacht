@@ -44,9 +44,6 @@ var playerApp = (function() {
 
             });
 
-            // player.set('test', 2392039203920930293); //set some test data
-            // player.send('testMsg', 'hello world'); //send some test data
-
         });
 
         //temp
@@ -65,7 +62,6 @@ var playerApp = (function() {
                 score: 0,
                 isrunning: 0
             },
-            timeRemaining: 0,
             gameTickTimer: null,
             intensity: 0
         }
@@ -78,7 +74,6 @@ var playerApp = (function() {
 
         //start timer
         gameState.gameTickTimer = window.setInterval(gameTick, (config.gameTickLength * 1000));
-        gameState.timeRemaining = config.gameLength;
 
         ui.goToScreen('play');
 
@@ -97,15 +92,8 @@ var playerApp = (function() {
 
         playerChannel.set('score', gameState.player.score);
 
-        console.log(gameState.intensity);
-
-
-        //calc intensity
         ui.setIntensity();
-
         gameState.intensity = 0;
-
-        gameState.timeRemaining = gameState.timeRemaining - config.gameTickLength;
 
     }
 
@@ -114,6 +102,17 @@ var playerApp = (function() {
         console.log('handle team choice');
 
         gameState.player.team = team;
+
+        // for (var i = 0; i<120; i++) {
+        //     playerChannel.set('team', team);
+
+        // };
+
+        // for (var i = 0; i<120; i++) {
+        //     playerChannel.set('team', 'right');
+
+        // };
+
         playerChannel.set('team', team);
 
         ui.goToScreen('about-to-start');
@@ -127,11 +126,11 @@ var playerApp = (function() {
 
     return {
         init: init,
-        gameState,
-        handleTap,
-        handleTeamChoice,
-        startGame,
-        config
+        gameState: gameState,
+        handleTap: handleTap,
+        handleTeamChoice: handleTeamChoice,
+        startGame: startGame,
+        config: config
     }
 
 })();

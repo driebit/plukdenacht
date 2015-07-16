@@ -1,7 +1,12 @@
 var canvasApp = (function() {
 
     var me = this,
-        gamestate;
+        gamestate,
+        currentRow = {
+            'left': 0,
+            'right': 0
+        },
+        maxMembersInRow = 20;
        
 
     function init () {
@@ -39,6 +44,9 @@ var canvasApp = (function() {
     }
 
     function addPlayer(id) {
+
+        //TODO: check if player exists in array, then don't add it
+        
         gamestate.players.push({id: id});
         return gamestate;
     }
@@ -104,23 +112,27 @@ var canvasApp = (function() {
     
     // Rendering
 
-    function renderPlayers() {
-        
-        gamestate.players.filter(function(player) {
-            return player.team == "A";
-        }).map(function(player) {
-            $('#playersTeamA').append(
-                $('<li>').attr('score', player.score).append(player.name)
-            );
-        })
-        
-        gamestate.players.filter(function(player) {
-            return player.team == "B";
-        }).map(function(player) {
-            $('#playersTeamB').append(
-                $('<li>').attr('score', player.score).append(player.name)
-            );
-        })
+    function renderAddPlayer(id) {
+
+        var player = getPlayer(id);
+   
+        var newplayer = $('<li class="member"><img src="' + player.photo + '"></li>')
+
+        var theCurrentRow = currentRow[player.team],
+            playerTeam = $('div[class^="player-wrapper__team-' + player.team + '"]'),
+            currentMembersBlock = playerTeam.find('.block--' + theCurrentRow),
+            currentMembersInBlock = currentMembersBlock.find('li').size();
+
+        if(currentMembersInBlock + 1 > maxMembersInRow) {
+            currentRow[player.team]++;
+            // if(currentRow[player.team] % 2 != 0) {
+            //     maxMembersInRow--;
+            // }
+            theCurrentRow = currentRow[player.team];
+        }
+
+        currentMembersBlock.append(newplayer);  
+
         
     }
     
@@ -130,7 +142,7 @@ var canvasApp = (function() {
     }
     
     function render(){
-        renderPlayers();
+        //renderPlayers();
         renderTotals();
     }
     
@@ -148,7 +160,8 @@ var canvasApp = (function() {
         startCountDown: startCountDown,
         startGame: startGame,
         endGame: endGame,
-        state: state
+        state: state,
+        renderAddPlayer
     }
 
 })();

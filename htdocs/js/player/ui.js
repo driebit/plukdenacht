@@ -13,7 +13,7 @@ var ui = (function() {
             handleGroupSelect('right')
         });
 
-        $('#hitit').on('click', playerApp.handleTap);
+        $('#hitit').on('touchend', playerApp.handleTap);
 
         $('#debug-start').on('click', playerApp.startGame);
 
@@ -42,7 +42,6 @@ var ui = (function() {
 
         //disable active screen
         $('div[class^="screen--"].is-active').removeClass('is-active').addClass('is-not-active');
-
         //enable active screen
         if(screen == 'choose-side') {
             $('.screen--side').addClass('is-active');
