@@ -24,6 +24,17 @@ var ui = (function() {
         playerApp.handleTeamChoice(side);
     }
 
+    function setIntensity() {
+
+        var percentage = (playerApp.gameState.intensity / playerApp.config.maxIntensity) * 100;
+        
+        if(percentage > 0) {
+            console.log(percentage);
+            $('.click-bar__meter').css('width', (percentage + '%'));
+        }
+
+    }
+
     function goToScreen(screen) {
 
         //return screen name
@@ -56,7 +67,8 @@ var ui = (function() {
 
     return {
         init: init,
-        goToScreen: goToScreen
+        goToScreen: goToScreen,
+        setIntensity: setIntensity
     }
   
 })();
