@@ -16,6 +16,12 @@ gulp.task('watch', function () {
 
 gulp.task('styles', function () {
     gulp.src(CSS_SOURCE + '/screen.scss')
-        .pipe(sass({errLogToConsole: true}))
-        .pipe(gulp.dest(CSS_BUILD));
+        .pipe(sass({
+            errLogToConsole: true,
+            sourcemap: false
+        }))
+        .pipe(gulp.dest(CSS_BUILD))
+        .on('error', function (error) {
+            console.error('' + error);
+        });
 });

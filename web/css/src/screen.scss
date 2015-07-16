@@ -1,5 +1,3 @@
 @import 'normalize';
-
-body {
-    border: 10px solid red;
-}
+@import 'base';
+@import 'screen';

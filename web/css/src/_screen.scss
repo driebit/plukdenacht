@@ -1,1 +1,19 @@
-_screen.scss
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 100%;
+    border: 1px solid red;
+
+    &.is-active {
+        left: 0px;
+    }
+}
+
+.screen--wait,
+.screen--side,
+.screen--play,
+.screen--score {
+    @extend .screen;
+}
