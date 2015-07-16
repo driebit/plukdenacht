@@ -8,16 +8,26 @@
     </head>
 
     <body>
-        <div id="wait" class="screen--wait">
+
+
+       <!--  <a href="#" id="tap" style="width: 100px; height: 100px; border: 2px solid blue; z-index: 100; position: absolute; top: 0px; display: block; color: red ">TAP</a> -->
+
+        <div id="wait" class="screen--wait is-active">
             TUG OF WAR
             <!--<button>Send message</button>-->
         </div>
-        <div id="side" class="screen--side is-active">
+        <div id="side" class="screen--side">
             <div class="screen__intro">
                 <span>Aan welke kant van het scherm zit je?</span>
             </div>
             <button id="player-left" class="btn-side btn-side--left"><span>Links</span></button>
             <button id="player-right" class="btn-side btn-side--right"><span>rechts</span></button>
+        </div>
+
+        <div id="#" class="screen--about-to-start">
+            Hou het scherm in de gaten, we gaan zo beginnen!
+            <br><br>
+            <button id="debug-start">DEBUG START</button>
         </div>
 
         <div id="play" class="screen--play">
@@ -33,7 +43,14 @@
         <script src="js/player/playerApp.js"></script>
 
         <script>
-            playerApp.init();
+
+            $( document ).ready(function() {
+                playerApp.init();
+
+            });
+
+
+            
         </script>
         
     </body>

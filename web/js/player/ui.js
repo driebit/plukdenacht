@@ -13,28 +13,34 @@ var ui = (function() {
             handleGroupSelect('right')
         });
 
-        $('#tapButton').on('click', playerApp.handleTap);
-
-        
-
+        $('#tap').on('click', playerApp.handleTap);
+        $('#debug-start').on('click', playerApp.startGame);
 
     }
-
-    //console.log(playerApp);
-
 
     function handleGroupSelect(side) {
-        console.log('group selected ' + side);
+        playerApp.handleTeamChoice(side);
 
     }
-
 
     function goToScreen(screen) {
 
         //return screen name
+        console.log('go to screen', screen);
+
+        //disable active screen
+        $('div[class^="screen--"].is-active').removeClass('is-active').addClass('is-not-active');
+
+        //enable active screen
+        if(screen == 'choose-side') {
+            $('.screen--side').addClass('is-active');
+        } else if(screen == 'about-to-start') {
+            $('.screen--about-to-start').addClass('is-active');
+        } else if ('play') {
+            $('.screen--play').addClass('is-active');
+        }
 
     }
-
 
     return {
 
