@@ -39,7 +39,8 @@ var canvasApp = (function() {
     }
 
     function addPlayer(id) {
-        return gamestate.players.push({id: id});
+        gamestate.players.push({id: id});
+        return gamestate;
     }
 
     function getPlayer(id) {
@@ -79,13 +80,13 @@ var canvasApp = (function() {
     
     function startGame() {
         gamestate.players.map(function(player) {
-            player.channel.set('running', 1);
+            player.channel.set('isrunning', 1);
         })
     }
     
     function endGame() {
         gamestate.players.map(function(player) {
-            player.channel.set('running', 0);
+            player.channel.set('isrunning', 0);
         })
     }
     

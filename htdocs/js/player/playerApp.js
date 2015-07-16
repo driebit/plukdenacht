@@ -4,8 +4,9 @@ var playerApp = (function() {
         currentScreen,
         playerObject,
         config = {
-            gameLength: 4,
-            gameTickLength: 2
+            gameLength: 10,
+            gameTickLength: 2,
+            maxIntensity: 26
         },
         gameState = createGameState(),
         playerChannel,
@@ -32,6 +33,7 @@ var playerApp = (function() {
             });
 
             player.on('isrunning', function(isrunning) {
+
                 gameState.player.isrunning = isrunning;
 
                 if(isrunning == 1) {
@@ -60,10 +62,12 @@ var playerApp = (function() {
                 name: 'danny',
                 photo: null,
                 team: 'left',
-                score: 0
+                score: 0,
+                isrunning: 0
             },
             timeRemaining: 0,
-            gameTickTimer: null
+            gameTickTimer: null,
+            intensity: 0
         }
 
     }
@@ -83,6 +87,7 @@ var playerApp = (function() {
     function stopGame() {
 
         clearInterval(gameState.gameTickTimer);
+
         console.log('game ended');
         ui.goToScreen('score');
 
@@ -91,6 +96,14 @@ var playerApp = (function() {
     function gameTick() {
 
         playerChannel.set('score', gameState.player.score);
+
+        console.log(gameState.intensity);
+
+
+        //calc intensity
+        ui.setIntensity();
+
+        gameState.intensity = 0;
 
         gameState.timeRemaining = gameState.timeRemaining - config.gameTickLength;
 
@@ -113,6 +126,7 @@ var playerApp = (function() {
 
     function handleTap() {
        gameState.player.score++;
+       gameState.intensity++;
     }
 
     return {
@@ -120,7 +134,8 @@ var playerApp = (function() {
         gameState,
         handleTap,
         handleTeamChoice,
-        startGame
+        startGame,
+        config
     }
 
 })();
