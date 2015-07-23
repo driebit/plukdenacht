@@ -103,17 +103,12 @@ var playerApp = (function() {
 
         gameState.player.team = team;
 
-        // for (var i = 0; i<120; i++) {
+        // for (var i = 0; i<22; i++) {
         //     playerChannel.set('team', team);
 
         // };
 
-        for (var i = 0; i<22; i++) {
-            playerChannel.set('team', team);
-
-        };
-
-        //playerChannel.set('team', team);
+        playerChannel.set('team', team);
 
         ui.goToScreen('about-to-start');
 
