@@ -4,6 +4,8 @@ var ui = (function() {
 
         console.log('init ui module');
 
+        //FastClick.attach(document.body);
+
         //handlers
         $('#player-left').on('click', function() {
             handleGroupSelect('left')
@@ -13,7 +15,7 @@ var ui = (function() {
             handleGroupSelect('right')
         });
 
-        $('#hitit').on('touchend', playerApp.handleTap);
+        $('#hitit').on('click touchend', playerApp.handleTap);
 
         $('#debug-start').on('click', playerApp.startGame);
 
@@ -25,13 +27,16 @@ var ui = (function() {
     }
 
     function setIntensity() {
+        var percentage,
+            intensity = playerApp.gameState.intensity;
 
-        var percentage = (playerApp.gameState.intensity / playerApp.config.maxIntensity) * 100;
-        
-        if(percentage > 0) {
-            console.log(percentage);
-            $('.click-bar__meter').css('width', (percentage + '%'));
+        if(intensity > 0) {
+            percentage = (playerApp.gameState.intensity / playerApp.config.maxIntensity) * 100;
+        } else {
+            percentage = 0;
         }
+        
+        $('.click-bar__meter').css('width', (percentage + '%'));
 
     }
 
@@ -42,6 +47,7 @@ var ui = (function() {
 
         //disable active screen
         $('div[class^="screen--"].is-active').removeClass('is-active').addClass('is-not-active');
+
         //enable active screen
         if(screen == 'choose-side') {
             $('.screen--side').addClass('is-active');

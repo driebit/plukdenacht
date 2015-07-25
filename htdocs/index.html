@@ -13,6 +13,9 @@
 </head>
 
 <body>
+
+  <textarea id="debug" style="position: absolute; border: 2px solid red; top: 0px; left: 0px; z-index: 200; height: 200px; width: 250px; color: black; font-size: 12px"></textarea>
+
    <div id="info" class="canvas--play is-active">
         <div class="canvas__top__team-left"></div>
         <div class="canvas__top__logo"></div>
@@ -125,7 +128,7 @@
         setTimeout(requestPlayer, 10);
       }
 
-      canvasApp.startCountDown(60 * 2, $('#countdown__minutes'), canvasApp.startGame);
+      canvasApp.startCountDown(60 * 0.2, $('#countdown__minutes'), canvasApp.startGame);
       
       setInterval(canvasApp.render, 1000);
 

@@ -5,11 +5,16 @@ var playerApp = (function() {
         playerObject,
         config = {
             gameLength: 10,
-            gameTickLength: 2,
-            maxIntensity: 26
+            dataTickLength: 3,
+            animationTickLength: 1,
+            maxIntensity: 16
         },
         gameState = createGameState(),
         playerChannel,
+        timers = {
+            'animationTimer': null,
+            'dataTimer': null
+        },
         socket;
 
     function init () {
@@ -62,7 +67,6 @@ var playerApp = (function() {
                 score: 0,
                 isrunning: 0
             },
-            gameTickTimer: null,
             intensity: 0
         }
 
@@ -72,8 +76,9 @@ var playerApp = (function() {
 
         console.log('start game');  
 
-        //start timer
-        gameState.gameTickTimer = window.setInterval(gameTick, (config.gameTickLength * 1000));
+        //start timers
+        timers.dataTimer = window.setInterval(dataTick, (config.dataTickLength * 1000));
+        timers.animationTimer = window.setInterval(animationTick, (config.animationTickLength * 1000));
 
         ui.goToScreen('play');
 
@@ -81,19 +86,26 @@ var playerApp = (function() {
 
     function stopGame() {
 
-        clearInterval(gameState.gameTickTimer);
+        clearInterval(timers.dataTimer);
+        clearInterval(timers.animationTimer);
 
         console.log('game ended');
         ui.goToScreen('score');
 
     }
 
-    function gameTick() {
+    function animationTick() {
 
-        playerChannel.set('score', gameState.player.score);
-
+        debugLog('animationTick');
         ui.setIntensity();
         gameState.intensity = 0;
+
+    }
+
+    function dataTick() {
+
+        playerChannel.set('score', gameState.player.score);
+        debugLog('dataTick');
 
     }
 
@@ -102,11 +114,6 @@ var playerApp = (function() {
         console.log('handle team choice');
 
         gameState.player.team = team;
-
-        // for (var i = 0; i<22; i++) {
-        //     playerChannel.set('team', team);
-
-        // };
 
         playerChannel.set('team', team);
 
@@ -117,6 +124,14 @@ var playerApp = (function() {
     function handleTap() {
        gameState.player.score++;
        gameState.intensity++;
+    }
+
+    function debugLog(msg) {
+        var date = new Date();
+
+        $('#debug').val($('#debug').val() + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' - ' + msg + '\n');
+        $('#debug').scrollTop($('#debug')[0].scrollHeight);
+
     }
 
     return {

@@ -56,6 +56,7 @@ var canvasApp = (function() {
     }
     
     function setPlayerProp(id, name, value) {
+        debugLog('setplayerprop ' + name + ' : ' + value);
         return getPlayer(id)[name] = value;
     }
     
@@ -99,6 +100,9 @@ var canvasApp = (function() {
     // Scoring
     
     function currentTotal() {
+
+        if(gamestate.players.length == 0) return 0;
+
         var t = gamestate.players.map(function(player) {
             return player.score;
         }).reduce(function(total, next) {
@@ -108,6 +112,9 @@ var canvasApp = (function() {
     }
     
     function currentTeamTotal(team) {
+
+        if(gamestate.players.length == 0) return 0;
+
         var t = gamestate.players.filter(function(player) {
             return player.team === team;
         }).map(function(player) {
@@ -128,6 +135,8 @@ var canvasApp = (function() {
 
         var player = getPlayer(id);
    
+        //TODO: fallback photo
+
         var newplayer = $('<li class="member"><img src="' + player.photo + '"></li>')
 
         var theCurrentRow = currentRow[player.team],
@@ -150,6 +159,9 @@ var canvasApp = (function() {
     function renderTotals() {
         $("#totalTeamA").height(relativeTeamTotal('left') + "%");
         $("#totalTeamB").height(relativeTeamTotal('right') + "%");
+
+
+        debugLog('renderTotals');
     }
     
     function render(){
@@ -158,6 +170,15 @@ var canvasApp = (function() {
     
     function state() {
         return gamestate;
+    }
+
+    function debugLog(msg) {
+        
+        var date = new Date();
+
+        $('#debug').val($('#debug').val() + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' - ' + msg + '\n');
+        $('#debug').scrollTop($('#debug')[0].scrollHeight);
+
     }
 
     return {
@@ -172,7 +193,8 @@ var canvasApp = (function() {
         startGame: startGame,
         endGame: endGame,
         state: state,
-        renderAddPlayer
+        renderAddPlayer,
+        debugLog: debugLog
     }
 
 })();
