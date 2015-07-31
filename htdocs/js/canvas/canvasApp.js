@@ -126,9 +126,11 @@ var canvasApp = (function() {
             $('.canvas--scores').addClass('right-won');
             $('.canvas--scores__title h1').html('the bulls won!');
             winningTeam = 'right';
-        }
+        }        
 
-        filterTeam(winningTeam).map(function(player) {
+        filterTeam(winningTeam).sort(function(a, b){
+            return b.score - a.score;
+        }).map(function(player) {
             if (player.photo) {
                 playersContainer.append('<li><img src="' + player.photo + '"><div>' + player.score + '</div></li>');
             }
@@ -292,7 +294,7 @@ var canvasApp = (function() {
         relativeTeamTotal: relativeTeamTotal,
         startCountDown: startCountDown,
         state: state,
-        renderAddPlayer,
+        renderAddPlayer: renderAddPlayer,
         debugLog: debugLog,
         gotoScreen: gotoScreen,
         renderAddPlayer: renderAddPlayer,
