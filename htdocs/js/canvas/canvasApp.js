@@ -145,10 +145,6 @@ var canvasApp = (function() {
     }
     
     function relativeTeamTotal(team){
-
-        // console.log('currentTeamTotal: ' + currentTeamTotal(team));
-        // console.log('currentTotal: ' + currentTotal());
-
         return 100 * currentTeamTotal(team) / currentTotal(); 
     }
      
@@ -198,8 +194,25 @@ var canvasApp = (function() {
         return gamestate;
     }
 
+
+    function gotoScreen(screen) {
+
+        $('div[class^="canvas--"]').removeClass('is-active').addClass('is-not-active');
+
+        //enable active screen
+        if(screen == 'scores') {
+            $('.canvas--scores').removeClass('is-not-active').addClass('is-active');
+        } else if(screen == 'endgame') {
+            $('.canvas--endgame').removeClass('is-not-active').addClass('is-active');
+        }
+
+    }
+
+
     function debugLog(msg) {
         
+        if($('#debug').size() < 1) return false;
+
         var date = new Date();
 
         $('#debug').val($('#debug').val() + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' - ' + msg + '\n');
@@ -220,7 +233,8 @@ var canvasApp = (function() {
         endGame: endGame,
         state: state,
         renderAddPlayer,
-        debugLog: debugLog
+        debugLog: debugLog,
+        gotoScreen: gotoScreen
     }
 
 })();

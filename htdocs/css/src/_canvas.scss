@@ -19,15 +19,7 @@
         left: -100%;
     }
 
-    &:before {
-        content: '';
-        width: 50%;
-        height: 100%;
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        background: $green;
-    }
+    
 }
 
 @-webkit-keyframes blink {
@@ -38,6 +30,16 @@
 .canvas--play {
     @extend .canvas;
 
+    &:before {
+        content: '';
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: $green;
+    }
+
     .countdown {
         width: 100%;
         position: absolute;
@@ -47,6 +49,93 @@
         line-height: 1;
     }
 }
+
+
+/* end scoring screen */
+.canvas--scores {
+     @extend .canvas;
+
+     &.left-won {
+        background: $blue;
+        .canvas--scores__title {
+            background-image: url('/nl.driebit.tugofwar/images/endscreen-header-left.png');
+        }
+     }
+
+     &.right-won {
+         background: $red;
+        .canvas--scores__title {
+            background-image: url('/nl.driebit.tugofwar/images/endscreen-header-right.png');
+        }
+     }
+
+}
+
+.canvas--scores__title {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 212px;
+    position: relative;
+    font-size: 26px;
+
+    h1 {
+        position: absolute;
+        display: block;
+        left: 475px;
+        top: 30px;
+    }
+ }
+
+
+ .canvas--scores__players {
+
+        display: block;
+        list-style-type: none;
+        margin: 0px;
+        padding: 30px;
+
+        li {
+            font-size: 16px;
+            vertical-align: top;
+            display: inline-block;
+            border: 2px solid white;
+            height: 80px;
+            width: 80px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+
+            img {
+                max-width: 100%;
+                overflow: hidden;
+            }
+
+        }
+ }
+
+ .canvas--scores__player {
+
+ }
+
+
+/* end game screen */
+.canvas--endgame {
+    @extend .canvas;
+
+    background: white;
+    color: black;
+
+    img {
+        display: block;
+        margin: 0px auto;
+        margin-top: 30px;
+    }
+
+}
+
+
 
 .countdown_label {
     width: 500px;
@@ -117,8 +206,6 @@
     @extend .power-meter--right;
     left: 250px;
     right: auto;
-
-    
 
     &:after {
         background: $blue;
@@ -268,3 +355,11 @@
         }
     }
 }
+
+
+
+
+
+
+
+

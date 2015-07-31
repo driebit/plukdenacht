@@ -575,7 +575,7 @@ html, body {
     border-radius: 50%;
     border: 5px solid #fff; }
 
-.canvas, .canvas--play {
+.canvas, .canvas--play, .canvas--scores, .canvas--endgame {
   width: 1400px;
   height: 900px;
   position: absolute;
@@ -587,24 +587,25 @@ html, body {
   font-size: 60px;
   text-transform: uppercase;
   background: #bee890; }
-  .canvas.is-active, .is-active.canvas--play {
+  .canvas.is-active, .is-active.canvas--play, .is-active.canvas--scores, .is-active.canvas--endgame {
     left: 0px; }
-  .canvas.is-not-active, .is-not-active.canvas--play {
+  .canvas.is-not-active, .is-not-active.canvas--play, .is-not-active.canvas--scores, .is-not-active.canvas--endgame {
     left: -100%; }
-  .canvas:before, .canvas--play:before {
-    content: '';
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    background: #7ED321; }
 
 @-webkit-keyframes blink {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
+
+.canvas--play:before {
+  content: '';
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: #7ED321; }
 
 .canvas--play .countdown {
   width: 100%;
@@ -613,6 +614,59 @@ html, body {
   text-align: center;
   font-size: 120px;
   line-height: 1; }
+
+/* end scoring screen */
+.canvas--scores.left-won {
+  background: #4563a6; }
+  .canvas--scores.left-won .canvas--scores__title {
+    background-image: url("/nl.driebit.tugofwar/images/endscreen-header-left.png"); }
+
+.canvas--scores.right-won {
+  background: #DA4266; }
+  .canvas--scores.right-won .canvas--scores__title {
+    background-image: url("/nl.driebit.tugofwar/images/endscreen-header-right.png"); }
+
+.canvas--scores__title {
+  width: 100%;
+  margin-bottom: 20px;
+  height: 212px;
+  position: relative;
+  font-size: 26px; }
+  .canvas--scores__title h1 {
+    position: absolute;
+    display: block;
+    left: 475px;
+    top: 30px; }
+
+.canvas--scores__players {
+  display: block;
+  list-style-type: none;
+  margin: 0px;
+  padding: 30px; }
+  .canvas--scores__players li {
+    font-size: 16px;
+    vertical-align: top;
+    display: inline-block;
+    border: 2px solid white;
+    height: 80px;
+    width: 80px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative; }
+    .canvas--scores__players li img {
+      max-width: 100%;
+      overflow: hidden; }
+
+/* end game screen */
+.canvas--endgame {
+  background: white;
+  color: black; }
+  .canvas--endgame img {
+    display: block;
+    margin: 0px auto;
+    margin-top: 30px; }
 
 .countdown_label {
   width: 500px;
