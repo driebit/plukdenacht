@@ -104,39 +104,46 @@ var canvasApp = (function() {
     }
     
     function endGame() {
-        document.querySelector("#countdown_label").innerText = "Finished!";
+        document.querySelector("#countdown_label").innerText = "Finished, standby";
         Object.keys(gamestate.players).map(function(playerId) {
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 0);
         });
+       
 
-        gotoScreen('scores');
+        //allow some extra time for the last client data to come in
+        window.setTimeout(function() {
 
-        var leftScore = relativeTeamTotal('left'),
-            rightScore = relativeTeamTotal('right'),
-            playersContainer = $('.canvas--scores__players'),
-            winningTeam = null;
+            gotoScreen('scores');
 
-        if(leftScore > rightScore) {
-            $('.canvas--scores').addClass('left-won');
-            $('.canvas--scores__title h1').html('the eagles won!');
-            winningTeam = 'left';
+            var leftScore = relativeTeamTotal('left'),
+                rightScore = relativeTeamTotal('right'),
+                playersContainer = $('.canvas--scores__players'),
+                winningTeam = null;
 
-        } else {
-            $('.canvas--scores').addClass('right-won');
-            $('.canvas--scores__title h1').html('the bulls won!');
-            winningTeam = 'right';
-        }        
+            if(leftScore > rightScore) {
+                $('.canvas--scores').addClass('left-won');
+                $('.canvas--scores__title h1').html('the eagles won!');
+                winningTeam = 'left';
 
-        filterTeam(winningTeam).sort(function(a, b){
-            return b.score - a.score;
-        }).map(function(player) {
-            if (player.photo) {
-                playersContainer.append('<li><img src="' + player.photo + '"><div>' + player.score + '</div></li>');
-            }
-        });
+            } else {
+                $('.canvas--scores').addClass('right-won');
+                $('.canvas--scores__title h1').html('the bulls won!');
+                winningTeam = 'right';
+            }        
 
-        startCountDown(60*0.5, null, postGame);
+            filterTeam(winningTeam).sort(function(a, b){
+                return b.score - a.score;
+            }).map(function(player) {
+                if (player.photo) {
+                    playersContainer.append('<li><img src="' + player.photo + '"><div>' + player.score + '</div></li>');
+                }
+            });
+
+            startCountDown(60*0.5, null, postGame);
+
+        }, 7000);
+
 
     }
 

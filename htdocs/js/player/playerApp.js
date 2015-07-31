@@ -89,6 +89,8 @@ var playerApp = (function() {
         clearInterval(timers.dataTimer);
         clearInterval(timers.animationTimer);
 
+        dataTick();
+
         console.log('game ended');
         ui.goToScreen('score');
 
