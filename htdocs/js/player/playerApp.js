@@ -7,7 +7,7 @@ var playerApp = (function() {
             gameLength: 10,
             dataTickLength: 3,
             animationTickLength: 1,
-            maxIntensity: 16
+            maxIntensity: 10
         },
         gameState = createGameState(),
         playerChannel,
@@ -95,21 +95,14 @@ var playerApp = (function() {
     }
 
     function animationTick() {
-
-        debugLog('animationTick');
         ui.setIntensity();
         gameState.intensity = 0;
-
     }
 
     function dataTick() {
 
-        //for (var i=0; i<100; i++) {
-            playerChannel.set('score', gameState.player.score);
-        //}
-
+        playerChannel.set('score', gameState.player.score);
         debugLog('dataTick');
-
     }
 
     function handleTeamChoice(team) {
@@ -128,9 +121,6 @@ var playerApp = (function() {
 
         e.stopPropagation(); 
         e.preventDefault();
-
-        console.log('handletap');
-        debugLog('tap: ');
 
        gameState.player.score++;
        gameState.intensity++;

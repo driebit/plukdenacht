@@ -139,9 +139,13 @@
           })
           
           player.on('team', function(name){
-            canvasApp.setPlayerProp(player.getID(), 'team', name);
-            canvasApp.renderAddPlayer(player.getID());
-          })
+
+            if (canvasApp.getPlayer(player.getID()).team == undefined) {
+                canvasApp.setPlayerProp(player.getID(), 'team', name);
+                canvasApp.renderAddPlayer(player.getID());
+            }
+            
+          });
           
           player.on('photo', function(photo){
             canvasApp.setPlayerProp(player.getID(), 'photo', photo);

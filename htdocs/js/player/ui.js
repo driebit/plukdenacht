@@ -8,22 +8,17 @@ var ui = (function() {
 
         //handlers
         $('#player-left').on('click', function() {
-            handleGroupSelect('left');
+            playerApp.handleTeamChoice('left');
         });
         
         $('#player-right').on('click', function() {
-            handleGroupSelect('right');
+            playerApp.handleTeamChoice('right');
         });
 
         $('#hitit').on('click', playerApp.handleTap);
 
         $('#debug-start').on('click', playerApp.startGame);
 
-    }
-
-    function handleGroupSelect(side) {
-        $('div[class^="screen--"]').addClass('is-team-' + side);
-        playerApp.handleTeamChoice(side);
     }
 
     function setIntensity() {
@@ -42,7 +37,6 @@ var ui = (function() {
 
     function goToScreen(screen) {
 
-        //return screen name
         console.log('go to screen', screen);
 
         //disable active screen
@@ -54,6 +48,8 @@ var ui = (function() {
         } else if(screen == 'about-to-start') {
             $('.screen--about-to-start').addClass('is-active');
         } else if(screen == 'play') {
+            var side = playerApp.gameState.player.team;
+            $('div[class^="screen--"]').addClass('is-team-' + side);
             $('.screen--play').addClass('is-active');
         } else if (screen == 'score') {
             $('.screen--score').addClass('is-active');
