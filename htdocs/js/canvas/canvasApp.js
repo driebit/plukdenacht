@@ -47,10 +47,7 @@ var canvasApp = (function() {
 
     function addPlayer(id) {
 
-        if (Object.keys(gamestate.players).length < 100) {
-            gamestate.players[id] = {id: id};
-        }
-        
+        gamestate.players[id] = {id: id};    
         return gamestate;
     }
 
