@@ -29,6 +29,12 @@ var playerApp = (function() {
 
             gameState.player.id = playerChannel.getID();
 
+            player.on('rejected', function(rejected){
+                if(rejected == 1) {
+                    ui.goToScreen('rejected')
+                }
+            });
+
             playerChannel.on('name', function(name){
               gameState.player.name = name;
             });
@@ -51,7 +57,7 @@ var playerApp = (function() {
 
         });
 
-        //temp
+        //initial screen
         ui.goToScreen('choose-side');
      
     }
@@ -112,7 +118,6 @@ var playerApp = (function() {
         console.log('handle team choice');
 
         gameState.player.team = team;
-
         playerChannel.set('team', team);
 
         ui.goToScreen('about-to-start');
@@ -121,11 +126,12 @@ var playerApp = (function() {
 
     function handleTap(e) {
 
-        e.stopPropagation(); 
-        e.preventDefault();
+       e.stopPropagation(); 
+       e.preventDefault();
 
        gameState.player.score++;
        gameState.intensity++;
+
     }
 
     function debugLog(msg) {
@@ -143,7 +149,8 @@ var playerApp = (function() {
         handleTap: handleTap,
         handleTeamChoice: handleTeamChoice,
         startGame: startGame,
-        config: config
+        config: config,
+        debugLog: debugLog
     }
 
 })();

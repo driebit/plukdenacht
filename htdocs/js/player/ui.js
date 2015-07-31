@@ -2,7 +2,7 @@ var ui = (function() {
 
     function init() {
 
-        console.log('init ui module');
+        //console.log('init ui module');
 
         FastClick.attach(document.body);
 
@@ -15,7 +15,22 @@ var ui = (function() {
             playerApp.handleTeamChoice('right');
         });
 
-        $('#hitit').on('click', playerApp.handleTap);
+        $('#hitit').on('mousedown touchstart', function(e) {
+
+            e.stopPropagation(); 
+            e.preventDefault();
+
+            $('.btn-play').removeClass('is-active').addClass('is-active');
+            playerApp.handleTap(e);
+        });
+
+        $('#hitit').on('mouseup touchend', function(e) {
+
+            e.stopPropagation(); 
+            e.preventDefault();
+
+            $('.btn-play').removeClass('is-active');
+        });
 
         $('#debug-start').on('click', playerApp.startGame);
 
@@ -37,14 +52,14 @@ var ui = (function() {
 
     function goToScreen(screen) {
 
-        console.log('go to screen', screen);
-
         //disable active screen
         $('div[class^="screen--"].is-active').removeClass('is-active').addClass('is-not-active');
 
         //enable active screen
         if(screen == 'choose-side') {
             $('.screen--side').addClass('is-active');
+        } else if(screen == 'rejected') {
+            $('.screen--rejected').addClass('is-active');
         } else if(screen == 'about-to-start') {
             $('.screen--about-to-start').addClass('is-active');
         } else if(screen == 'play') {
@@ -59,10 +74,16 @@ var ui = (function() {
     }
 
     function buildScoreScreen() {
-        console.log('build score screen');
+        //console.log('build score screen');
         
         $('#score-total-taps').html(playerApp.gameState.player.score);
-        $('.score-avatar img:eq(0)').attr('src', playerApp.gameState.player.photo);
+
+        if(playerApp.gameState.player.photo) {
+            $('.score-avatar').show();
+            $('.score-avatar img:eq(0)').attr('src', playerApp.gameState.player.photo);
+        } else {
+            $('.score-avatar').hide();
+        }
 
     }
 

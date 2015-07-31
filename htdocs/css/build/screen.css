@@ -447,21 +447,23 @@ html, body {
   transition: all 0s;
   outline: 0;
   outline: none;
-  font-size: 50px; }
-  .btn-play:active {
+  font-size: 50px;
+  /* is-active class is needed for android, doesnt pick it active state */ }
+  .btn-play:active, .btn-play.is-active {
     top: 13px;
     box-shadow: 0 2px 0 #264403, 0 3px 3px rgba(0, 0, 0, 0.2);
     background-image: url("/nl.driebit.tugofwar/images/bull-hit.svg"); }
   .is-team-left .btn-play {
     background: #417505 url("/nl.driebit.tugofwar/images/eagle.svg") center center no-repeat; }
-    .is-team-left .btn-play:active {
+    .is-team-left .btn-play:active, .is-team-left .btn-play.is-active {
       background-image: url("/nl.driebit.tugofwar/images/eagle-hit.svg");
       box-shadow: 0 2px 0 #264403, 0 3px 3px rgba(0, 0, 0, 0.2); }
 
 .screen, .screen--side,
 .screen--play,
 .screen--score,
-.screen--about-to-start {
+.screen--about-to-start,
+.screen--rejected {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -474,12 +476,14 @@ html, body {
   .screen.is-active, .is-active.screen--side,
   .is-active.screen--play,
   .is-active.screen--score,
-  .is-active.screen--about-to-start {
+  .is-active.screen--about-to-start,
+  .is-active.screen--rejected {
     left: 0px; }
   .screen.is-not-active, .is-not-active.screen--side,
   .is-not-active.screen--play,
   .is-not-active.screen--score,
-  .is-not-active.screen--about-to-start {
+  .is-not-active.screen--about-to-start,
+  .is-not-active.screen--rejected {
     left: -100%; }
 
 .screen--side {
@@ -499,6 +503,10 @@ html, body {
     display: block;
     padding: 20px;
     transform: perspective(5em) rotateX(-25deg); }
+
+.screen--rejected {
+  padding: 20px;
+  font-size: 33px; }
 
 .play-btn-wrapper {
   width: 100%;

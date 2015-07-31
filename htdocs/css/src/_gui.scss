@@ -75,7 +75,9 @@
     font-size: 50px;
 
 
-    &:active {
+    /* is-active class is needed for android, doesnt pick it active state */
+
+    &:active, &.is-active {
         top: 13px;
         box-shadow: 0 2px 0 darken(#417505, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
         background-image: url('/nl.driebit.tugofwar/images/bull-hit.svg');
@@ -84,7 +86,7 @@
     .is-team-left & {
         background: #417505 url('/nl.driebit.tugofwar/images/eagle.svg') center center no-repeat;
 
-        &:active {
+        &:active, &.is-active {
             background-image: url('/nl.driebit.tugofwar/images/eagle-hit.svg');
             box-shadow: 0 2px 0 darken(#417505, 10%), 0 3px 3px rgba(0, 0, 0, 0.2);
         }
@@ -116,7 +118,8 @@
 .screen--side,
 .screen--play,
 .screen--score,
-.screen--about-to-start {
+.screen--about-to-start,
+.screen--rejected {
     @extend .screen;
 }
 
@@ -144,6 +147,11 @@
 
 .screen--play {
 
+}
+
+.screen--rejected {
+    padding: 20px;
+    font-size: 33px;
 }
 
 .play-btn-wrapper {
