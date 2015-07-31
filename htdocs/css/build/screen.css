@@ -516,13 +516,12 @@ html, body {
 
 .click-bar-wrapper {
   width: 260px;
-  position: absolute;
-  top: 30px;
-  left: 50%;
   font-size: 20px;
   text-transform: uppercase;
   color: #417505;
-  transform: translateX(-50%); }
+  margin: 0px auto;
+  margin-top: 30px;
+  width: 225px; }
 
 .click-bar {
   width: 100%;
@@ -619,10 +618,11 @@ html, body {
 .canvas--play .countdown {
   width: 100%;
   position: absolute;
-  bottom: 480px;
+  bottom: 470px;
   text-align: center;
-  font-size: 120px;
-  line-height: 1; }
+  font-size: 100px;
+  line-height: 1;
+  text-shadow: 1px 1px 10px #646464; }
 
 /* end scoring screen */
 .canvas--scores.left-won {
@@ -681,43 +681,46 @@ html, body {
     margin-top: 30px; }
 
 .countdown_label {
-  width: 500px;
+  width: 750px;
   margin: 0 auto;
-  font-size: 60px;
-  line-height: 1;
+  font-size: 50px;
+  line-height: 1.2;
   text-align: center;
   transition: all 0.1s;
-  opacity: 1; }
+  opacity: 1;
+  text-shadow: 1px 1px 10px #646464; }
+  .countdown_label span {
+    font-size: 40px; }
 
 .canvas__top__logo {
   display: block;
   width: 513px;
   height: 114px;
   position: absolute;
-  top: 46px;
+  top: 26px;
   left: 440px;
   background: url("/nl.driebit.tugofwar/images/canvas-top-logo.svg"); }
 
 .canvas__top__team-left,
 .canvas__top__team-right {
-  width: 224px;
-  height: 96px;
+  width: 250px;
+  height: 100px;
   position: absolute;
   top: 320px;
-  right: 160px;
-  background: url("/nl.driebit.tugofwar/images/team-left.svg") no-repeat; }
+  right: 20px;
+  background: url("/nl.driebit.tugofwar/images/team-right.svg") no-repeat; }
 
 .canvas__top__team-left {
-  left: 160px;
+  left: 70px;
   right: auto;
-  background-image: url("/nl.driebit.tugofwar/images/team-right.svg"); }
+  background-image: url("/nl.driebit.tugofwar/images/team-left.svg"); }
 
 .power-meter--right, .power-meter--left {
   width: 76px;
   height: 188px;
   position: absolute;
   top: 100px;
-  right: 250px;
+  right: 100px;
   background: #E2E0E0; }
   .power-meter--right:after, .power-meter--left:after {
     content: '';
@@ -736,7 +739,7 @@ html, body {
     transition: all 0.3s; }
 
 .power-meter--left {
-  left: 250px;
+  left: 100px;
   right: auto; }
   .power-meter--left:after {
     background: #4563a6; }
@@ -804,21 +807,35 @@ html, body {
     left: auto;
     right: 30px; }
 
+/* middle */
+/* 45px +/- */
 .block--0 {
   bottom: 118px;
   z-index: 100000; }
 
 .block--1 {
-  bottom: 165px;
+  bottom: 163px;
   z-index: 90000; }
 
 .block--2 {
-  bottom: 75px;
+  bottom: 73px;
   z-index: 110000; }
 
 .block--3 {
-  bottom: 205px;
+  bottom: 208px;
   z-index: 80000; }
+
+.block--4 {
+  bottom: 28px;
+  z-index: 120000; }
+
+.block--5 {
+  bottom: 253px;
+  z-index: 70000; }
+
+.block--6 {
+  bottom: -17px;
+  z-index: 130000; }
 
 .player-wrapper__team-right .block--0 {
   bottom: 132px; }

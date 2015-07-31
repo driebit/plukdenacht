@@ -8,8 +8,8 @@ var canvasApp = (function() {
         },
         maxMembersInRow = 20,
         maxPlayers = 100,
-        gameRunning = 0;
-       
+        gameStartMessage = 'Go to<br><span>tugofwar.plukdenacht</span><br>on your phone!';
+
 
     function init () {
 
@@ -86,7 +86,7 @@ var canvasApp = (function() {
     }  
     
     function startPreGame() {
-        document.querySelector("#countdown_label").innerText = "Starting in...";
+        $('#countdown_label').html(gameStartMessage);
         startCountDown(60 * 0.5, $('#countdown__minutes'), startGame);
     }
     
@@ -101,7 +101,7 @@ var canvasApp = (function() {
     }
     
     function endGame() {
-        document.querySelector("#countdown_label").innerText = "Finished, standby";
+        document.querySelector("#countdown_label").innerText = "Stand by, calculating scores...";
         Object.keys(gamestate.players).map(function(playerId) {
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 0);
@@ -195,9 +195,7 @@ var canvasApp = (function() {
     function relativeTeamTotal(team){
 
         var currentTotalNum = currentTotal();
-
         if(currentTotalNum == 0) return 50;
-
         return 100 * currentTeamTotal(team) / currentTotalNum; 
     }
      
@@ -207,7 +205,7 @@ var canvasApp = (function() {
 
         var player = getPlayer(id);
         var newplayer;
-
+        
         if (player.photo) {
             newplayer = $('<li class="member"><img src="' + player.photo + '"></li>'); 
         } else {
@@ -219,16 +217,15 @@ var canvasApp = (function() {
             currentMembersBlock = playerTeam.find('.block--' + theCurrentRow),
             currentMembersInBlock = currentMembersBlock.find('li').size();
 
-        if(currentMembersInBlock + 1 > maxMembersInRow) {
-            currentRow[player.team]++;
-            if(currentRow[player.team] % 2 != 0) {
-                maxMembersInRow--;
-            }
-            theCurrentRow = currentRow[player.team];
-        }
+         if(currentMembersInBlock + 1 > maxMembersInRow) {
+             currentRow[player.team]++;
+             // if(currentRow[player.team] % 2 != 0) {
+             //     maxMembersInRow--;
+             // }
+             theCurrentRow = currentRow[player.team];
+         }
 
-        currentMembersBlock.append(newplayer);  
-                
+        currentMembersBlock.append(newplayer);       
     }
     
     function renderTotals() {
@@ -276,7 +273,6 @@ var canvasApp = (function() {
 
     }
 
-
     function debugLog(msg) {
         
         if($('#debug').size() < 1) return false;
@@ -302,7 +298,8 @@ var canvasApp = (function() {
         debugLog: debugLog,
         gotoScreen: gotoScreen,
         renderAddPlayer: renderAddPlayer,
-        startPreGame: startPreGame
+        startPreGame: startPreGame,
+        maxPlayers: maxPlayers
     }
 
 })();

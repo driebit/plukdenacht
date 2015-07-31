@@ -34,7 +34,7 @@
 
         <div class="player-wrapper__team-left">
           <ul id="playersTeamA" class="block team-members--left block--0">
-              
+            
           </ul>
           <ul id="playersTeamA" class="block team-members--left block--1">
               
@@ -112,21 +112,24 @@
   <!-- end prod javascript -->
 
   <script>
-  
+
+    var requestPlayerTimeout;
+
     canvasApp.init();
   
     gameScreen.requestGame('nl.driebit.tugofwar', function(game){
       
-      console.log('game ready', game);
+      //console.log('game ready', game);
 
       function requestPlayer(){
         game.requestPlayer(onPlayer);
       }
 
       function onPlayer(player){
+
         if(player){
           
-          if (Object.keys(canvasApp.state().players).length < 100) {
+          if (Object.keys(canvasApp.state().players).length < 1) {
             canvasApp.addPlayer(player.getID());
             canvasApp.setPlayerProp(player.getID(), 'channel', player);
           
@@ -156,7 +159,8 @@
 
         }
 
-        setTimeout(requestPlayer, 1000);
+        requestPlayerTimeout = setTimeout(requestPlayer, 1000);
+
       }
 
       canvasApp.startPreGame();

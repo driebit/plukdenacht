@@ -43,10 +43,11 @@
     .countdown {
         width: 100%;
         position: absolute;
-        bottom: 480px;
+        bottom: 470px;
         text-align: center;
-        font-size: 120px;
+        font-size: 100px;
         line-height: 1;
+        text-shadow: 1px 1px 10px rgba(100, 100, 100, 1);
     }
 }
 
@@ -137,20 +138,24 @@
         margin: 0px auto;
         margin-top: 30px;
     }
-
 }
 
 
-
 .countdown_label {
-    width: 500px;
+    width: 750px;
     margin: 0 auto;
-    font-size: 60px;
-    line-height: 1;
+    font-size: 50px;
+    line-height: 1.2;
     text-align: center;
     transition: all 0.1s;
     opacity: 1;
     //-webkit-animation: blink 1s infinite; 
+    text-shadow: 1px 1px 10px rgba(100, 100, 100, 1);
+
+    span {
+        font-size: 40px;
+    }
+
 }
 
 .canvas__top__logo {
@@ -158,25 +163,25 @@
     width: 513px;
     height: 114px;
     position: absolute;
-    top: 46px;
+    top: 26px;
     left: 440px;
     background: url('/nl.driebit.tugofwar/images/canvas-top-logo.svg');
 }
 
 .canvas__top__team-left,
 .canvas__top__team-right {
-    width: 224px;
-    height: 96px;
+    width: 250px;
+    height: 100px;
     position: absolute;
     top: 320px;
-    right: 160px;
-    background: url('/nl.driebit.tugofwar/images/team-left.svg') no-repeat;
+    right: 20px;
+    background: url('/nl.driebit.tugofwar/images/team-right.svg') no-repeat;
 }
 
 .canvas__top__team-left {
-    left: 160px;
+    left: 70px;
     right: auto;
-    background-image: url('/nl.driebit.tugofwar/images/team-right.svg');
+    background-image: url('/nl.driebit.tugofwar/images/team-left.svg');
 }
 
 .power-meter--right {
@@ -184,7 +189,7 @@
     height: 188px;
     position: absolute;
     top: 100px;
-    right: 250px;
+    right: 100px;
     background: #E2E0E0;
 
     &:after {
@@ -209,7 +214,7 @@
 
 .power-meter--left {
     @extend .power-meter--right;
-    left: 250px;
+    left: 100px;
     right: auto;
 
     &:after {
@@ -295,25 +300,44 @@
     }
 }
 
+/* middle */
+/* 45px +/- */
 .block--0 {
     bottom: 118px;
     z-index: 100000;
 }
 
 .block--1 {
-    bottom: 165px;
+    bottom: 163px;
     z-index: 90000;
 }
 
 .block--2 {
-    bottom: 75px;
+    bottom: 73px;
     z-index: 110000;
 }
 
 .block--3 {
-    bottom: 205px;
+    bottom: 208px;
     z-index: 80000;
 }
+
+.block--4 {
+    bottom: 28px;
+    z-index: 120000;
+}
+
+.block--5 {
+    bottom: 253px;
+    z-index: 70000;
+}
+
+.block--6 {
+    bottom: -17px;
+    z-index: 130000;
+}
+
+
 
 .player-wrapper__team-right {
     .block--0 {

@@ -161,13 +161,13 @@
 
 .click-bar-wrapper {
     width: 260px;
-    position: absolute;
-    top: 30px;
-    left: 50%;
     font-size: 20px;
     text-transform: uppercase;
     color: #417505;
-    transform: translateX(-50%);
+    margin: 0px auto;
+    margin-top: 30px;
+    width: 225px;
+    
 }
 
 .click-bar {
