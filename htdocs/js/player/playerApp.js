@@ -104,9 +104,9 @@ var playerApp = (function() {
 
     function dataTick() {
 
-        for (var i=0; i<100; i++) {
+        //for (var i=0; i<100; i++) {
             playerChannel.set('score', gameState.player.score);
-        }
+        //}
 
         debugLog('dataTick');
 
@@ -124,7 +124,14 @@ var playerApp = (function() {
 
     }
 
-    function handleTap() {
+    function handleTap(e) {
+
+        e.stopPropagation(); 
+        e.preventDefault();
+
+        console.log('handletap');
+        debugLog('tap: ');
+
        gameState.player.score++;
        gameState.intensity++;
     }
@@ -132,6 +139,7 @@ var playerApp = (function() {
     function debugLog(msg) {
         var date = new Date();
 
+        if($('#debug').size() < 1) return false;
         $('#debug').val($('#debug').val() + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() + ' - ' + msg + '\n');
         $('#debug').scrollTop($('#debug')[0].scrollHeight);
 

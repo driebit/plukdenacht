@@ -4,18 +4,18 @@ var ui = (function() {
 
         console.log('init ui module');
 
-        //FastClick.attach(document.body);
+        FastClick.attach(document.body);
 
         //handlers
         $('#player-left').on('click', function() {
-            handleGroupSelect('left')
+            handleGroupSelect('left');
         });
         
         $('#player-right').on('click', function() {
-            handleGroupSelect('right')
+            handleGroupSelect('right');
         });
 
-        $('#hitit').on('click touchend', playerApp.handleTap);
+        $('#hitit').on('click', playerApp.handleTap);
 
         $('#debug-start').on('click', playerApp.startGame);
 

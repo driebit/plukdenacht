@@ -78,7 +78,7 @@ var canvasApp = (function() {
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            display.text(minutes + ":" + seconds);
+            if(display) display.text(minutes + ":" + seconds);
 
             if (--timer < 0) {
                 timer = duration;
@@ -90,7 +90,7 @@ var canvasApp = (function() {
     
     function startPreGame() {
         document.querySelector("#countdown_label").innerText = "Starting in...";
-        startCountDown(60 * 1, $('#countdown__minutes'), startGame);
+        startCountDown(60 * 0.5, $('#countdown__minutes'), startGame);
     }
     
     function startGame() {
@@ -100,7 +100,7 @@ var canvasApp = (function() {
             player.channel.set('isrunning', 1);
         })
         
-        startCountDown(60 * 1, $('#countdown__minutes'), endGame);
+        startCountDown(60 * 0.5, $('#countdown__minutes'), endGame);
     }
     
     function endGame() {
@@ -109,6 +109,48 @@ var canvasApp = (function() {
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 0);
         });
+
+        gotoScreen('scores');
+
+        var leftScore = relativeTeamTotal('left'),
+            rightScore = relativeTeamTotal('right'),
+            playersContainer = $('.canvas--scores__players'),
+            winningTeam = null;
+
+        if(leftScore > rightScore) {
+            $('.canvas--scores').addClass('left-won');
+            $('.canvas--scores__title h1').html('the eagles won!');
+            winningTeam = 'left';
+
+        } else {
+            $('.canvas--scores').addClass('right-won');
+            $('.canvas--scores__title h1').html('the bulls won!');
+            winningTeam = 'right';
+        }
+
+        filterTeam(winningTeam).map(function(player) {
+            if (player.photo) {
+                playersContainer.append('<li><img src="' + player.photo + '"><div>' + player.score + '</div></li>');
+            }
+        });
+
+        startCountDown(60*0.5, null, postGame);
+
+    }
+
+    function postGame() {
+        gotoScreen('endgame');
+    }
+
+    function filterTeam(team) {
+        var players = Object.keys(gamestate.players).map(function(playerId){
+            var player = getPlayer(playerId);
+            return player;
+        }).filter(function(player) {
+            return player.team === team;
+        });
+
+        return players;
     }
     
     // Scoring
@@ -135,20 +177,22 @@ var canvasApp = (function() {
             return player;
         });
 
-        var t = players.filter(function(player) {
-            return player.team === team;
-        }).map(function(player) {
+        var t = filterTeam(team).map(function(player) {
             return player.score;
         }).reduce(function(total, next) {
             return total + next;
         }, 0);
 
-        
         return t;
     }
     
     function relativeTeamTotal(team){
-        return 100 * currentTeamTotal(team) / currentTotal(); 
+
+        var currentTotalNum = currentTotal();
+
+        if(currentTotalNum == 0) return 50;
+
+        return 100 * currentTeamTotal(team) / currentTotalNum; 
     }
      
     // Rendering
@@ -157,7 +201,7 @@ var canvasApp = (function() {
 
         var player = getPlayer(id);
         var newplayer;
-   
+
         if (player.photo) {
             newplayer = $('<li class="member"><img src="' + player.photo + '"></li>'); 
         } else {
@@ -178,7 +222,7 @@ var canvasApp = (function() {
         }
 
         currentMembersBlock.append(newplayer);  
-        
+                
     }
     
     function renderTotals() {
@@ -191,9 +235,21 @@ var canvasApp = (function() {
 
         debugLog('team left: ' + left + ' right: ' + right);
     }
+
+    function renderGroups() {
+
+        var right = relativeTeamTotal('right'),
+            wrapper = $('.teams-wrapper');
+
+       wrapper.css({
+            'margin-left': 160 * right / 100
+        });
+
+    }
     
     function render(){
         renderTotals();
+        renderGroups();
     }
     
     function state() {

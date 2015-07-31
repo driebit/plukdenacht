@@ -644,20 +644,23 @@ html, body {
   margin: 0px;
   padding: 30px; }
   .canvas--scores__players li {
-    font-size: 16px;
+    font-size: 26px;
     vertical-align: top;
     display: inline-block;
-    border: 2px solid white;
-    height: 80px;
-    width: 80px;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    border-radius: 40px;
-    overflow: hidden;
-    position: relative; }
+    position: relative;
+    margin: 0px 10px 10px 0px; }
     .canvas--scores__players li img {
       max-width: 100%;
+      overflow: hidden;
+      border: 2px solid white;
+      height: 80px;
+      width: 80px;
+      -webkit-border-radius: 40px;
+      -moz-border-radius: 40px;
+      border-radius: 40px;
       overflow: hidden; }
+    .canvas--scores__players li div {
+      text-align: center; }
 
 /* end game screen */
 .canvas--endgame {
@@ -787,7 +790,10 @@ html, body {
   list-style: none; }
   .block.team-members--left {
     right: auto;
-    left: -30px; }
+    left: 30px; }
+  .block.team-members--right {
+    left: auto;
+    right: 30px; }
 
 .block--0 {
   bottom: 118px;
@@ -841,3 +847,10 @@ html, body {
       right: 1px;
       border-radius: 100%;
       border: 2px solid #fff; }
+
+.teams-wrapper {
+  width: 1400px;
+  height: 900px;
+  position: relative;
+  left: -80px;
+  transition: all 1s; }
