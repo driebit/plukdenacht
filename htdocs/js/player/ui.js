@@ -21,6 +21,9 @@ var ui = (function() {
             e.preventDefault();
 
             $('.btn-play').removeClass('is-active').addClass('is-active');
+
+            document.getElementById('sound').play();
+
             playerApp.handleTap(e);
         });
 
@@ -65,13 +68,15 @@ var ui = (function() {
         } else if(screen == 'play') {
             var side = playerApp.gameState.player.team;
             $('div[class^="screen--"]').addClass('is-team-' + side);
-            console.log(side);
+            
             if(side === 'left') {
                 $('#eagle').attr({id: 'sound'});
             } else {
                 $('#bull').attr({id: 'sound'});
             }
+
             $('.screen--play').addClass('is-active');
+            
         } else if (screen == 'score') {
             $('.screen--score').addClass('is-active');
             buildScoreScreen();
@@ -80,7 +85,6 @@ var ui = (function() {
     }
 
     function buildScoreScreen() {
-        //console.log('build score screen');
         
         $('#score-total-taps').html(playerApp.gameState.player.score);
 

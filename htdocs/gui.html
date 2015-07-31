@@ -36,7 +36,7 @@
                 <div class="click-bar"><span class="click-bar__meter"></span></div>
             </div>
             <div class="play-btn-wrapper">
-                <button id="hitit" onclick="document.getElementById('sound').play()" class="btn-play"></button>
+                <button id="hitit" class="btn-play"></button>
             </div>
         </div>
 
@@ -52,10 +52,17 @@
         </div>
 
         <script src="/js/lib/jquery.min.js"></script>
-        <script src="js/player/fastclick.js"></script>
         <script src="/js/lib/device.js"></script>
+
+        <!-- dev javascript -->
+        <script src="js/player/fastclick.js"></script>
         <script src="js/player/ui.js"></script>
         <script src="js/player/playerApp.js"></script>
+        <!-- end dev javascript -->
+
+        <!-- prod javascript -->
+        <!--<script src="js/player/dist/player.js">-->
+        <!-- end prod javascript !-->
 
         <script>
             $( document ).ready(function() {

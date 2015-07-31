@@ -110,7 +110,7 @@ var playerApp = (function() {
     function dataTick() {
 
         playerChannel.set('score', gameState.player.score);
-        debugLog('dataTick');
+        //debugLog('dataTick');
     }
 
     function handleTeamChoice(team) {
