@@ -6,7 +6,9 @@ var canvasApp = (function() {
             'left': 0,
             'right': 0
         },
-        maxMembersInRow = 20;
+        maxMembersInRow = 20,
+        maxPlayers = 100,
+        gameRunning = 0;
        
 
     function init () {
@@ -14,7 +16,7 @@ var canvasApp = (function() {
         console.log('init canvas app, start init other modules');
 
         gamestate = createGame();
-        // gamestate = fakeGame();
+        //gamestate = fakeGame();
 
     }
     
@@ -45,16 +47,15 @@ var canvasApp = (function() {
 
     function addPlayer(id) {
 
-        //TODO: check if player exists in array, then don't add it
+        if (Object.keys(gamestate.players).length < 100) {
+            gamestate.players[id] = {id: id};
+        }
         
-        gamestate.players[id] = {id: id};
         return gamestate;
     }
 
     function getPlayer(id) {
         return gamestate.players[id];
-
-        //return $.grep(gamestate.players, function(e){ return e.id == id; })[0];
     }
     
     function setPlayerProp(id, name, value) {
@@ -87,17 +88,23 @@ var canvasApp = (function() {
         }, 1000);
     }  
     
+    function startPreGame() {
+        document.querySelector("#countdown_label").innerText = "Starting in...";
+        startCountDown(60 * 1, $('#countdown__minutes'), startGame);
+    }
+    
     function startGame() {
-
-        Object.keys(gamestate.players).map(function(playerId) {
-            
+        document.querySelector("#countdown_label").innerText = "Pull!";
+        Object.keys(gamestate.players).map(function(playerId) {           
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 1);
         })
+        
+        startCountDown(60 * 1, $('#countdown__minutes'), endGame);
     }
     
     function endGame() {
-
+        document.querySelector("#countdown_label").innerText = "Finished!";
         Object.keys(gamestate.players).map(function(playerId) {
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 0);
@@ -107,8 +114,6 @@ var canvasApp = (function() {
     // Scoring
     
     function currentTotal() {
-
-        //if(gamestate.players.length == 0) return 0;
 
         var players = Object.keys(gamestate.players).map(function(playerId){
             var player = getPlayer(playerId);
@@ -124,8 +129,6 @@ var canvasApp = (function() {
     }
     
     function currentTeamTotal(team) {
-
-        //if(gamestate.players.length == 0) return 0;
 
         var players = Object.keys(gamestate.players).map(function(playerId){
             var player = getPlayer(playerId);
@@ -153,10 +156,13 @@ var canvasApp = (function() {
     function renderAddPlayer(id) {
 
         var player = getPlayer(id);
+        var newplayer;
    
-        //TODO: fallback photo
-
-        var newplayer = $('<li class="member"><img src="' + player.photo + '"></li>')
+        if (player.photo) {
+            newplayer = $('<li class="member"><img src="' + player.photo + '"></li>'); 
+        } else {
+            newplayer = $('<li class="member"></li>');
+        }
 
         var theCurrentRow = currentRow[player.team],
             playerTeam = $('div[class^="player-wrapper__team-' + player.team + '"]'),
@@ -229,12 +235,12 @@ var canvasApp = (function() {
         currentTeamTotal: currentTeamTotal,
         relativeTeamTotal: relativeTeamTotal,
         startCountDown: startCountDown,
-        startGame: startGame,
-        endGame: endGame,
         state: state,
         renderAddPlayer,
         debugLog: debugLog,
-        gotoScreen: gotoScreen
+        gotoScreen: gotoScreen,
+        renderAddPlayer: renderAddPlayer,
+        startPreGame: startPreGame
     }
 
 })();

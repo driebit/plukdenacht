@@ -14,6 +14,7 @@
 
 <body>
 
+<<<<<<< HEAD
 <!--   <textarea id="debug" style="position: absolute; border: 2px solid red; top: 0px; left: 0px; z-index: 200; height: 200px; width: 250px; color: black; font-size: 12px"></textarea>
  -->
 
@@ -25,7 +26,7 @@
       <div class="power-meter--left"><span id="totalTeamA" style="height: 10%;"></span></div>
       <div class="power-meter--right"><span id="totalTeamB" style="height: 10%;"></span></div>
       <div class="countdown">
-          <p class="countdown_label">pull!!! <!-- Game starting in--><!-- get ready --></p>
+          <p id="countdown_label" class="countdown_label">pull!!! <!-- Game starting in--><!-- get ready --></p>
           <span id="countdown__minutes"></span>
       </div>
 
@@ -79,7 +80,6 @@
   </div>
 <div id='players'></div>
 
-
  <div class='canvas--scores left-won is-not-active' id='canvas-scores'>
       
       <div class="canvas--scores__title">
@@ -103,13 +103,12 @@
 <div class="canvas--endgame is-not-active" id="canvas-end">
   <img src="/nl.driebit.tugofwar/images/driebit-logo.png">
 </div>
-   
+ 
 
   <script src="/js/lib/screen.js"></script>
   <script src="js/canvas/canvasApp.js"></script>
   <script src="/js/lib/jquery.min.js"></script>
   <script>
-  console.log(gameScreen);
   
     canvasApp.init();
   
@@ -123,13 +122,6 @@
 
       function onPlayer(player){
         if(player){
-          // console.log(player);
-          // var d = $('<div/>', {id: player.getID()});
-          // var n = $('<div/>', {id: 'name'});
-          // var p = $('<img/>', {id: 'photo'});
-          // var t = $('<div/>', {id: 'test'});
-          // d.append(n); d.append(p); d.append(t);
-          // $('#players').append(d);
           
           canvasApp.addPlayer(player.getID());
           canvasApp.setPlayerProp(player.getID(), 'channel', player);
@@ -156,8 +148,7 @@
         setTimeout(requestPlayer, 1000);
       }
 
-
-      canvasApp.startCountDown(60 * 0.2, $('#countdown__minutes'), canvasApp.startGame);
+      canvasApp.startPreGame();
       
       setInterval(canvasApp.render, 1000);
 
