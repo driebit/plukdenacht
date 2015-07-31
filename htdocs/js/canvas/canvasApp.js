@@ -16,7 +16,7 @@ var canvasApp = (function() {
         console.log('init canvas app, start init other modules');
 
         gamestate = createGame();
-        // gamestate = fakeGame();
+        //gamestate = fakeGame();
 
     }
     
@@ -90,7 +90,7 @@ var canvasApp = (function() {
     
     function startPreGame() {
         document.querySelector("#countdown_label").innerText = "Starting in...";
-        startCountDown(60 * 0.2, $('#countdown__minutes'), startGame);
+        startCountDown(60 * 1, $('#countdown__minutes'), startGame);
     }
     
     function startGame() {
@@ -115,8 +115,6 @@ var canvasApp = (function() {
     
     function currentTotal() {
 
-        //if(gamestate.players.length == 0) return 0;
-
         var players = Object.keys(gamestate.players).map(function(playerId){
             var player = getPlayer(playerId);
             return player;
@@ -131,8 +129,6 @@ var canvasApp = (function() {
     }
     
     function currentTeamTotal(team) {
-
-        //if(gamestate.players.length == 0) return 0;
 
         var players = Object.keys(gamestate.players).map(function(playerId){
             var player = getPlayer(playerId);
@@ -152,10 +148,7 @@ var canvasApp = (function() {
     }
     
     function relativeTeamTotal(team){
-
-        // console.log('currentTeamTotal: ' + currentTeamTotal(team));
-        // console.log('currentTotal: ' + currentTotal());
-
+        
         return 100 * currentTeamTotal(team) / currentTotal(); 
     }
      
@@ -164,10 +157,13 @@ var canvasApp = (function() {
     function renderAddPlayer(id) {
 
         var player = getPlayer(id);
+        var newplayer;
    
-        //TODO: fallback photo
-
-        var newplayer = $('<li class="member"><img src="' + player.photo + '"></li>')
+        if (player.photo) {
+            newplayer = $('<li class="member"><img src="' + player.photo + '"></li>'); 
+        } else {
+            newplayer = $('<li class="member"></li>');
+        }
 
         var theCurrentRow = currentRow[player.team],
             playerTeam = $('div[class^="player-wrapper__team-' + player.team + '"]'),
