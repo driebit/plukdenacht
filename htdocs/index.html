@@ -23,7 +23,7 @@
         <div class="power-meter--left"><span id="totalTeamA" style="height: 10%;"></span></div>
         <div class="power-meter--right"><span id="totalTeamB" style="height: 10%;"></span></div>
         <div class="countdown">
-            <p class="countdown_label">pull!!! <!-- Game starting in--><!-- get ready --></p>
+            <p id="countdown_label" class="countdown_label">pull!!! <!-- Game starting in--><!-- get ready --></p>
             <span id="countdown__minutes"></span>
         </div>
 
@@ -95,13 +95,6 @@
 
       function onPlayer(player){
         if(player){
-          // console.log(player);
-          // var d = $('<div/>', {id: player.getID()});
-          // var n = $('<div/>', {id: 'name'});
-          // var p = $('<img/>', {id: 'photo'});
-          // var t = $('<div/>', {id: 'test'});
-          // d.append(n); d.append(p); d.append(t);
-          // $('#players').append(d);
           
           canvasApp.addPlayer(player.getID());
           canvasApp.setPlayerProp(player.getID(), 'channel', player);
@@ -128,8 +121,7 @@
         setTimeout(requestPlayer, 1000);
       }
 
-
-      canvasApp.startCountDown(60 * 0.2, $('#countdown__minutes'), canvasApp.startGame);
+      canvasApp.startPreGame();
       
       setInterval(canvasApp.render, 1000);
 

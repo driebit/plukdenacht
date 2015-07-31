@@ -87,17 +87,23 @@ var canvasApp = (function() {
         }, 1000);
     }  
     
+    function startPreGame() {
+        document.querySelector("#countdown_label").innerText = "Starting in...";
+        startCountDown(60 * 0.2, $('#countdown__minutes'), startGame);
+    }
+    
     function startGame() {
-
-        Object.keys(gamestate.players).map(function(playerId) {
-            
+        document.querySelector("#countdown_label").innerText = "Pull!";
+        Object.keys(gamestate.players).map(function(playerId) {           
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 1);
         })
+        
+        startCountDown(60 * 1, $('#countdown__minutes'), endGame);
     }
     
     function endGame() {
-
+        document.querySelector("#countdown_label").innerText = "Finished!";
         Object.keys(gamestate.players).map(function(playerId) {
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 0);
@@ -216,10 +222,9 @@ var canvasApp = (function() {
         currentTeamTotal: currentTeamTotal,
         relativeTeamTotal: relativeTeamTotal,
         startCountDown: startCountDown,
-        startGame: startGame,
-        endGame: endGame,
         state: state,
-        renderAddPlayer,
+        renderAddPlayer: renderAddPlayer,
+        startPreGame: startPreGame,
         debugLog: debugLog
     }
 
