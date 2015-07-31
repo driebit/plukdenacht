@@ -104,7 +104,10 @@ var playerApp = (function() {
 
     function dataTick() {
 
-        playerChannel.set('score', gameState.player.score);
+        for (var i=0; i<100; i++) {
+            playerChannel.set('score', gameState.player.score);
+        }
+
         debugLog('dataTick');
 
     }
