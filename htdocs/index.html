@@ -131,29 +131,33 @@
       function onPlayer(player){
         if(player){
           
-          canvasApp.addPlayer(player.getID());
-          canvasApp.setPlayerProp(player.getID(), 'channel', player);
+          if (Object.keys(canvasApp.state().players).length < 100) {
+            canvasApp.addPlayer(player.getID());
+            canvasApp.setPlayerProp(player.getID(), 'channel', player);
           
-          player.on('name', function(name){
-            canvasApp.setPlayerProp(player.getID(), 'name', name);
-          })
+            player.on('name', function(name){
+              canvasApp.setPlayerProp(player.getID(), 'name', name);
+            })
           
-          player.on('team', function(name){
+            player.on('team', function(name){
 
-            if (canvasApp.getPlayer(player.getID()).team == undefined) {
-                canvasApp.setPlayerProp(player.getID(), 'team', name);
-                canvasApp.renderAddPlayer(player.getID());
-            }
+              if (canvasApp.getPlayer(player.getID()).team == undefined) {
+                  canvasApp.setPlayerProp(player.getID(), 'team', name);
+                  canvasApp.renderAddPlayer(player.getID());
+              }
             
-          });
+            });
           
-          player.on('photo', function(photo){
-            canvasApp.setPlayerProp(player.getID(), 'photo', photo);
-          })
+            player.on('photo', function(photo){
+              canvasApp.setPlayerProp(player.getID(), 'photo', photo);
+            })
           
-          player.on('score', function(score){
-            canvasApp.setPlayerProp(player.getID(), 'score', score);
-          })
+            player.on('score', function(score){
+              canvasApp.setPlayerProp(player.getID(), 'score', score);
+            })
+          } else {
+            player.set('rejected', 1);
+          }
 
         }
 

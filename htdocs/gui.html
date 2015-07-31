@@ -12,8 +12,11 @@
 
     <body>
 
-       <!--  <textarea id="debug" style="position: absolute; border: 2px solid red; top: 0px; left: 100px; z-index: 200; height: 200px; width: 250px; color: black; font-size: 12px"></textarea>  -->
-
+        <!--<textarea id="debug" style="position: absolute; border: 2px solid red; top: 0px; left: 100px; z-index: 200; height: 200px; width: 250px; color: black; font-size: 12px"></textarea> -->
+        
+        <audio id="bull" src="bull.mp3"></audio>
+        <audio id="eagle" src="eagle.mp3"></audio>
+        
         <div id="side" class="screen--side">
             <div class="screen__intro">
                 <span>On which side of the screen are you sitting?</span>
@@ -33,7 +36,7 @@
                 <div class="click-bar"><span class="click-bar__meter"></span></div>
             </div>
             <div class="play-btn-wrapper">
-                <button id="hitit" class="btn-play"></button>
+                <button id="hitit" onclick="document.getElementById('sound').play()" class="btn-play"></button>
             </div>
         </div>
 
