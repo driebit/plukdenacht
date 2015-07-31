@@ -50,6 +50,12 @@ var ui = (function() {
         } else if(screen == 'play') {
             var side = playerApp.gameState.player.team;
             $('div[class^="screen--"]').addClass('is-team-' + side);
+            console.log(side);
+            if(side === 'left') {
+                $('#eagle').attr({id: 'sound'});
+            } else {
+                $('#bull').attr({id: 'sound'});
+            }
             $('.screen--play').addClass('is-active');
         } else if (screen == 'score') {
             $('.screen--score').addClass('is-active');
