@@ -6,7 +6,9 @@ var canvasApp = (function() {
             'left': 0,
             'right': 0
         },
-        maxMembersInRow = 20;
+        maxMembersInRow = 20,
+        maxPlayers = 100,
+        gameRunning = 0;
        
 
     function init () {
@@ -45,16 +47,15 @@ var canvasApp = (function() {
 
     function addPlayer(id) {
 
-        //TODO: check if player exists in array, then don't add it
+        if (Object.keys(gamestate.players).length < 100) {
+            gamestate.players[id] = {id: id};
+        }
         
-        gamestate.players[id] = {id: id};
         return gamestate;
     }
 
     function getPlayer(id) {
         return gamestate.players[id];
-
-        //return $.grep(gamestate.players, function(e){ return e.id == id; })[0];
     }
     
     function setPlayerProp(id, name, value) {

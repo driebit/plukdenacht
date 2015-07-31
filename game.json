@@ -3,5 +3,6 @@
   "title": "Tug of war",
   "description": "Tug of war",
   "icon": "",
-  "pregame:": 2
+  "pregame:": 2,
+  "maxPlayers": 100
 }
