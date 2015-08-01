@@ -1,6 +1,8 @@
 #Pluk de Nacht
 
-Simple setup which serves static assets and implements a proof of concept socket thingy
+
+
+
 
 ##Usage
 
