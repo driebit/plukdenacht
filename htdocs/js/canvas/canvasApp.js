@@ -87,7 +87,7 @@ var canvasApp = (function() {
     
     function startPreGame() {
         $('#countdown_label').html(gameStartMessage);
-        startCountDown(60 * 1, $('#countdown__minutes'), startGame);
+        startCountDown(60 * 2, $('#countdown__minutes'), startGame);
     }
     
     function startGame() {

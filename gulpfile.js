@@ -1,6 +1,7 @@
 var gulp         = require('gulp'),
     sass         = require('gulp-sass'),
     uglify       = require('gulp-uglifyjs'),
+    order        = require('gulp-order'),
 
     CSS_SOURCE   = 'htdocs/css/src',
     CSS_BUILD    = 'htdocs/css/build',
@@ -30,6 +31,11 @@ gulp.task('styles', function () {
 gulp.task('build-js', function() {
 
     gulp.src('htdocs/js/player/*.js')
+        .pipe(order([
+                'htdocs/js/player/fastclick.js',
+                'htdocs/js/player/ui.js',
+                'htdocs/js/player/playerApp.js',
+            ], { base: './' }))
         .pipe(uglify('player.js'))
         .pipe(gulp.dest('htdocs/js/player/dist/'));
 
