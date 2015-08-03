@@ -138,7 +138,7 @@
 
     span {
         display: block;
-        padding: 20px;
+        padding: 10px;
         transform: perspective(5em) rotateX(-25deg);        
     }
 }   
@@ -165,7 +165,7 @@
     text-transform: uppercase;
     color: #417505;
     margin: 0px auto;
-    margin-top: 30px;
+    margin-top: 15px;
     width: 225px;
     
 }
@@ -242,3 +242,13 @@
         border: 5px solid #fff;
     }
 }
+
+
+.screen--about-to-start p,
+.screen__intro span,
+.screen--score p
+ {
+    text-shadow: 1px 1px 10px rgba(100, 100, 100, 1);
+}
+
+

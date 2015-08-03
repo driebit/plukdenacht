@@ -7,7 +7,9 @@
 ##Usage
 
 in console: open ./Multiplay.app
+
 goto http://localhost:9090/screen to start the canvas app
+
 wait for the game to start, then go to http://localhost:9090/ to start a game client
 
 ##Production builds

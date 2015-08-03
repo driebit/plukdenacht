@@ -8,7 +8,7 @@ var canvasApp = (function() {
         },
         maxMembersInRow = 20,
         maxPlayers = 100,
-        gameStartMessage = 'Go to<br><span>tugofwar.plukdenacht</span><br>on your phone!';
+        gameStartMessage = 'Go to<br><span>play.mooren.tv</span><br>on your phone!';
 
 
     function init () {
@@ -87,7 +87,7 @@ var canvasApp = (function() {
     
     function startPreGame() {
         $('#countdown_label').html(gameStartMessage);
-        startCountDown(60 * 0.5, $('#countdown__minutes'), startGame);
+        startCountDown(60 * 1, $('#countdown__minutes'), startGame);
     }
     
     function startGame() {

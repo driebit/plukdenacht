@@ -501,7 +501,7 @@ html, body {
   z-index: 20; }
   .screen__intro span {
     display: block;
-    padding: 20px;
+    padding: 10px;
     transform: perspective(5em) rotateX(-25deg); }
 
 .screen--rejected {
@@ -520,7 +520,7 @@ html, body {
   text-transform: uppercase;
   color: #417505;
   margin: 0px auto;
-  margin-top: 30px;
+  margin-top: 15px;
   width: 225px; }
 
 .click-bar {
@@ -582,6 +582,11 @@ html, body {
   .score-avatar img {
     border-radius: 50%;
     border: 5px solid #fff; }
+
+.screen--about-to-start p,
+.screen__intro span,
+.screen--score p {
+  text-shadow: 1px 1px 10px #646464; }
 
 .canvas, .canvas--play, .canvas--scores, .canvas--endgame {
   width: 1400px;

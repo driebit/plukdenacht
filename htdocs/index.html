@@ -3,8 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
-  <title>Vet coole touwtrek game</title>
+<title>TUG OF WAR</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 <link rel="stylesheet" href="css/build/screen.css">
   <!--[if lt IE 9]>
@@ -129,7 +128,7 @@
 
         if(player){
           
-          if (Object.keys(canvasApp.state().players).length < 1) {
+          if (Object.keys(canvasApp.state().players).length < canvasApp.maxPlayers) {
             canvasApp.addPlayer(player.getID());
             canvasApp.setPlayerProp(player.getID(), 'channel', player);
           
