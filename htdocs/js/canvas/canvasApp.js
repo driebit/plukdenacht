@@ -87,7 +87,10 @@ var canvasApp = (function() {
     
     function startPreGame() {
         $('#countdown_label').html(gameStartMessage);
-        startCountDown(60 * 2, $('#countdown__minutes'), startGame);
+
+        var startTime = $('body').data('starttime');
+
+        startCountDown(startTime, $('#countdown__minutes'), startGame);
     }
     
     function startGame() {
@@ -96,8 +99,10 @@ var canvasApp = (function() {
             var player = getPlayer(playerId);
             player.channel.set('isrunning', 1);
         })
+
+        var gameTime = $('body').data('gametime');
         
-        startCountDown(60 * 0.5, $('#countdown__minutes'), endGame);
+        startCountDown(gameTime, $('#countdown__minutes'), endGame);
     }
     
     function endGame() {
