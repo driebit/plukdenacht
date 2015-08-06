@@ -97,10 +97,7 @@
   <img src="/nl.driebit.tugofwar/images/driebit-logo.png">
 </div>
  
-
-  <script src="/js/lib/screen.js"></script>
-
-  <!--<script src="/js/lib/game.js"></script>-->
+  <script src="/js/lib/game.js"></script>
 
   <script src="/js/lib/jquery.min.js"></script>
 
@@ -139,7 +136,6 @@
             })
           
             player.on('team', function(name){
-
               if (canvasApp.getPlayer(player.getID()).team == undefined) {
                   canvasApp.setPlayerProp(player.getID(), 'team', name);
                   canvasApp.renderAddPlayer(player.getID());

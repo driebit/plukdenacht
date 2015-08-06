@@ -3,6 +3,16 @@
   "title": "Tug of war",
   "description": "Tug of war",
   "icon": "",
-  "pregame:": 2,
-  "maxPlayers": 100
+  "pregame:": 0,
+  "maxPlayers": 100,
+  "screen": {
+  	"queue": false,
+  	"results": false,
+  	"banner": false,
+  	"stage": {
+  		"width": "100%",
+  		"height": "100%"
+  	}
+  }
+
 }
