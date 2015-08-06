@@ -131,7 +131,7 @@
             canvasApp.addPlayer(player.getID());
             canvasApp.setPlayerProp(player.getID(), 'channel', player);
           
-            player.on('name', function(name){
+            player.onGet('name', function(name){
               canvasApp.setPlayerProp(player.getID(), 'name', name);
             })
           
@@ -143,7 +143,7 @@
             
             });
           
-            player.on('photo', function(photo){
+            player.onGet('photo', function(photo){
               canvasApp.setPlayerProp(player.getID(), 'photo', photo);
             })
           
