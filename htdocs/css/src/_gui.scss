@@ -152,6 +152,19 @@
     font-size: 33px;
 }
 
+.play-instructions {
+
+    color: white;
+    font-family: 'GeoSlab';
+    font-size: 28px;
+    line-height: 1.2;
+    text-align: center;
+    margin-top: 14px;
+    text-transform: uppercase;
+    padding: 10px;
+
+}
+
 .play-btn-wrapper {
     width: 100%;
     position: absolute;
@@ -246,7 +259,8 @@
 
 .screen--about-to-start p,
 .screen__intro span,
-.screen--score p
+.screen--score p,
+.play-instructions
  {
     text-shadow: 1px 1px 10px rgba(100, 100, 100, 1);
 }

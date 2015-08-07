@@ -121,7 +121,8 @@ var canvasApp = (function() {
             var leftScore = relativeTeamTotal('left'),
                 rightScore = relativeTeamTotal('right'),
                 playersContainer = $('.canvas--scores__players'),
-                winningTeam = null;
+                winningTeam = null,
+                scoreTime = $('body').data('scoretime');
 
             if(leftScore > rightScore) {
                 $('.canvas--scores').addClass('left-won');
@@ -142,10 +143,9 @@ var canvasApp = (function() {
                 }
             });
 
-            startCountDown(60*0.5, null, postGame);
+            startCountDown(scoreTime, null, postGame);
 
         }, 7000);
-
 
     }
 
