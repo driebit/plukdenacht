@@ -47,7 +47,11 @@ var canvasApp = (function() {
 
     function addPlayer(id) {
 
-        gamestate.players[id] = {id: id};    
+        gamestate.players[id] = {
+            id: id,
+            score: 0
+        };
+
         return gamestate;
     }
 
@@ -56,7 +60,7 @@ var canvasApp = (function() {
     }
     
     function setPlayerProp(id, name, value) {
-        debugLog('setplayerprop ' + name + ' : ' + value);
+        //debugLog('setplayerprop ' + name + ' : ' + value);
         return getPlayer(id)[name] = value;
     }
     
@@ -241,7 +245,6 @@ var canvasApp = (function() {
         $("#totalTeamA").height(left + "%");
         $("#totalTeamB").height(right + "%");
 
-        debugLog('team left: ' + left + ' right: ' + right);
     }
 
     function renderGroups() {
