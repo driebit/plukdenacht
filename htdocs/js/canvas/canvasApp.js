@@ -142,7 +142,7 @@ var canvasApp = (function() {
             filterTeam(winningTeam).sort(function(a, b){
                 return b.score - a.score;
             }).map(function(player) {
-                if (player.photo) {
+                if (player.photo && player.score != undefined) {
                     playersContainer.append('<li><img src="' + player.photo + '"><div>' + player.score + '</div></li>');
                 }
             });
@@ -178,7 +178,13 @@ var canvasApp = (function() {
         });
 
         var t = players.map(function(player) {
-            return player.score;
+
+            if(player.score) {
+                return player.score;
+            } else {
+                return 0;
+            }
+            
         }).reduce(function(total, next) {
             return total + next;
         }, 0);
@@ -193,7 +199,13 @@ var canvasApp = (function() {
         });
 
         var t = filterTeam(team).map(function(player) {
-            return player.score;
+
+            if(player.score) {
+                return player.score;
+            } else {
+                return 0;
+            }
+            
         }).reduce(function(total, next) {
             return total + next;
         }, 0);
